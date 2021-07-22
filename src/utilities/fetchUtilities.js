@@ -1,7 +1,8 @@
 const baseUrl = 'http://localhost:4000/';
 const usersUrl = baseUrl + 'users/';
+const projectsUrl = baseUrl + 'projects/';
 
-const fetchOptions = (body = '', method = 'POST', token = '') => {
+const fetchOptions = (body = '', token = '', method = 'POST') => {
   return {
     method: method,
     headers: {
@@ -35,4 +36,10 @@ const fetchLogin = async (username, password) => {
   return response.json();
 };
 
-export { fetchCreateUser, fetchLogin };
+const fetchSaveProject = async (project, token) => {
+  const body = { project: project };
+  const response = await fetch(projectsUrl, fetchOptions(body, token));
+  return response;
+};
+
+export { fetchCreateUser, fetchLogin, fetchSaveProject };

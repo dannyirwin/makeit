@@ -1,10 +1,45 @@
 import { useState } from 'react';
 
-export default function ProjectEditor({ project }) {
+import { fetchSaveProject } from '../../utilities/fetchUtilities';
+
+import '../../css/ProjectEditor.css';
+
+export default function ProjectEditor({ user, project, setCurrentPage }) {
   const [title, setTitle] = useState(project?.title);
   const [description, setDescription] = useState(project?.description);
-  const [thumbnailImage, setThumbnailImage] = useState(project?.thumbnailImage);
+  const [previewImage, setPreviewImage] = useState(project?.previewImage);
   const [content, setContent] = useState(project?.content);
+  const [isPublished, setIsPublished] = useState(
+    project?.is_published || false
+  );
+
+  const buildNewProject = () => {
+    return {
+      title,
+      description,
+      previewImage,
+      content,
+      isPublished,
+      author_id: user.id
+    };
+  };
+
+  const handleSaveProject = e => {
+    e.preventDefault();
+    console.log(buildNewProject());
+    //fetchSaveProject(buildNewProject());
+  };
+
+  const handleSaveAndPublishProject = e => {
+    e.preventDefault();
+    setIsPublished(true);
+    handleSaveProject(e);
+  };
+
+  const handleExit = e => {
+    e.preventDefault();
+    setCurrentPage('MyProfile');
+  };
 
   return (
     <form className='ProjectEditor'>
@@ -28,12 +63,12 @@ export default function ProjectEditor({ project }) {
         ></textarea>
       </div>
       <div className='input-container'>
-        <label htmlFor='description'>Preview Image</label>
+        <label htmlFor='previewImage'>Preview Image</label>
         <input
-          onChange={e => setThumbnailImage(e.target.value)}
+          onChange={e => setPreviewImage(e.target.value)}
           type='url'
-          name='thumbnailImage'
-          value={thumbnailImage}
+          name='previewImage'
+          value={previewImage}
         ></input>
       </div>
       <div className='input-container'>
@@ -47,9 +82,11 @@ export default function ProjectEditor({ project }) {
         ></textarea>
       </div>
       <div className='input-container'>
-        <button>Save Project</button>
-        <button>Save and Publish Project</button>
-        <button>Exit Without Saving</button>
+        <button onClick={handleSaveProject}>Save Project</button>
+        <button onClick={handleSaveAndPublishProject}>
+          Save and Publish Project
+        </button>
+        <button onClick={handleExit}>Exit Without Saving</button>
       </div>
     </form>
   );

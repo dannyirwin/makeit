@@ -1,0 +1,11 @@
+.MyProfile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.MyProfileContent {
+  width: 70ch;
+  border: solid black 1px;
+}

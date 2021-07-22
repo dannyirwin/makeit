@@ -1,45 +1,39 @@
 import React, { useState } from 'react';
 
-import { fetchCreateUser, fetchLogin } from '../../utilities/fetchUtilities';
-
-export default function LoginForm({ setUserAndToken }) {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-
-  const handleLogin = e => {
-    e.preventDefault();
-    console.log('logging in');
-    fetchLogin(username, password).then(response =>
-      setUserAndToken(response.user, response.token)
-    );
-  };
-  const handleSignUp = e => {
-    e.preventDefault();
-    console.log('signing up');
-    fetchCreateUser(username, password).then(response =>
-      setUserAndToken(response.user, response.token)
-    );
-  };
-
+export default function LoginForm({
+  setUserAndToken,
+  setIsNewUser,
+  setUsername,
+  setPassword,
+  handleLogin
+}) {
   return (
-    <form>
-      <label htmlFor='username'>Username:</label>
-      <input
-        onChange={e => setUsername(e.target.value)}
-        type='text'
-        name='username'
-        placeholder='DoodleBeader'
-        required
-      ></input>
-      <label htmlFor='password'>Password:</label>
-      <input
-        onChange={e => setPassword(e.target.value)}
-        type='text'
-        name='password'
-        required
-      ></input>
-      <button onClick={handleSignUp}>Sign Up</button>
-      <button onClick={handleLogin}>Login</button>
+    <form className='LoginForm' onSubmit={handleLogin}>
+      <div className='input-container'>
+        <label htmlFor='username'>Username:</label>
+        <input
+          onChange={e => setUsername(e.target.value)}
+          type='text'
+          name='username'
+          placeholder='DoodleBeader'
+          required
+        ></input>
+      </div>
+      <div className='input-container'>
+        <label htmlFor='password'>Password:</label>
+        <input
+          onChange={e => setPassword(e.target.value)}
+          type='text'
+          name='password'
+          required
+        ></input>
+      </div>
+      <div className='input-container'>
+        <input type='submit' value='Login'></input>
+        <button onClick={() => setIsNewUser(true)}>
+          Create a new Profile{' '}
+        </button>
+      </div>
     </form>
   );
 }

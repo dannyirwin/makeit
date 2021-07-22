@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import Login from './login/Login';
 import Header from './main/Header';
 
 import '../css/App.css';
@@ -18,7 +17,7 @@ function App() {
   return (
     <div className='App'>
       <Header username={user?.username} />
-      <Main setUserAndToken={setUserAndToken} />
+      <Main setUserAndToken={setUserAndToken} user={user} token={token} />
     </div>
   );
 }

@@ -5,7 +5,8 @@ export default function ProjectPreview({ project }) {
     <div className='UserPreview'>
       <h3>{project.title}</h3>
       <p>{project.description}</p>
-      <button>Save Project</button>
+      <p>By: {project.author.username}</p>
+      <button>Bookmark Project</button>
     </div>
   );
 }

@@ -13,14 +13,12 @@ export default function Login({ setUserAndToken }) {
 
   const handleLogin = e => {
     e.preventDefault();
-    console.log('logging in');
     fetchLogin(username, password).then(response =>
       setUserAndToken(response.user, response.token)
     );
   };
   const handleSignUp = e => {
     e.preventDefault();
-    console.log('signing up');
     fetchCreateUser(username, password).then(response =>
       setUserAndToken(response.user, response.token)
     );

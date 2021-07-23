@@ -4,10 +4,15 @@ import { fetchSaveProject } from '../../utilities/fetchUtilities';
 
 import '../../css/ProjectEditor.css';
 
-export default function ProjectEditor({ user, project, setCurrentPage }) {
+export default function ProjectEditor({
+  user,
+  project,
+  setCurrentPage,
+  token
+}) {
   const [title, setTitle] = useState(project?.title);
   const [description, setDescription] = useState(project?.description);
-  const [previewImage, setPreviewImage] = useState(project?.previewImage);
+  const [previewImage, setPreviewImage] = useState(project?.preview_image_url);
   const [content, setContent] = useState(project?.content);
   const [isPublished, setIsPublished] = useState(
     project?.is_published || false
@@ -17,17 +22,17 @@ export default function ProjectEditor({ user, project, setCurrentPage }) {
     return {
       title,
       description,
-      previewImage,
+      preview_image_url: previewImage,
       content,
-      isPublished,
+      is_published: isPublished,
       author_id: user.id
     };
   };
 
   const handleSaveProject = e => {
     e.preventDefault();
-    console.log(buildNewProject());
-    //fetchSaveProject(buildNewProject());
+
+    fetchSaveProject(buildNewProject(), token);
   };
 
   const handleSaveAndPublishProject = e => {

@@ -6,7 +6,7 @@ const fetchOptions = (body = '', token = '', method = 'POST') => {
   return {
     method: method,
     headers: {
-      Authentication: 'Bearer ' + token,
+      Authorization: 'Bearer ' + token,
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },

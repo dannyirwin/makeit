@@ -20,6 +20,7 @@ export default function Main({ setUserAndToken, user, token }) {
             user={user}
             project={currentProject}
             setCurrentPage={setCurrentPage}
+            token={token}
           />
         );
       case 'MyProfile':
@@ -27,7 +28,7 @@ export default function Main({ setUserAndToken, user, token }) {
         return (
           <MyProfile
             user={user}
-            //token={token}
+            token={token}
             setCurrentPage={setCurrentPage}
             setCurrentProject={setCurrentProject}
           />

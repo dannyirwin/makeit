@@ -2,7 +2,12 @@ import React from 'react';
 import ProjectPreview from './ProjectPreview';
 import UserPreview from './UserPreview';
 
-export default function SearchResults({ searchResults, searchType }) {
+export default function SearchResults({
+  searchResults,
+  searchType,
+  user,
+  setUser
+}) {
   let resultType = searchResults?.users
     ? 'users'
     : searchResults?.projects
@@ -16,8 +21,14 @@ export default function SearchResults({ searchResults, searchType }) {
     }
     switch (resultType) {
       case 'users':
-        return searchResults.users.map(user => {
-          return <UserPreview user={user} />;
+        return searchResults.users.map(searchResultUser => {
+          return (
+            <UserPreview
+              searchResultUser={searchResultUser}
+              user={user}
+              setUser={setUser}
+            />
+          );
         });
       case 'projects':
         return searchResults.projects.map(project => {

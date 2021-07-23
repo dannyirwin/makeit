@@ -1,6 +1,7 @@
 const baseUrl = 'http://localhost:4000/';
 const usersUrl = baseUrl + 'users/';
 const projectsUrl = baseUrl + 'projects/';
+const followUrl = baseUrl + 'follow/';
 
 const getToken = () => {
   return window.localStorage.getItem('token');
@@ -86,11 +87,35 @@ const fetchSearch = async (searchValue, filterType = 'projects') => {
   }
 };
 
+const fetchFollowUser = async (userToFollowId, userId) => {
+  const body = {
+    follower_followee: {
+      follower_id: userId,
+      followee_id: userToFollowId
+    }
+  };
+  const response = await fetch(followUrl, fetchOptions(body));
+  return response.json();
+};
+
+const fetchUnfollowUser = async (userToFollowId, userId) => {
+  const body = {
+    follower_followee: {
+      follower_id: userId,
+      followee_id: userToFollowId
+    }
+  };
+  const response = await fetch(followUrl, fetchOptions(body, 'DELETE'));
+  return response.json();
+};
+
 export {
   fetchCreateUser,
   fetchLogin,
   fetchPostProject,
   fetchPatchProject,
   fetchDeleteProject,
-  fetchSearch
+  fetchSearch,
+  fetchFollowUser,
+  fetchUnfollowUser
 };

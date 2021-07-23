@@ -38,7 +38,7 @@ export default function Main({ user, setUser }) {
       case 'Feed':
         return <Feed />;
       case 'Explore':
-        return <Explore user={user} />;
+        return <Explore user={user} setUser={setUser} />;
       case 'MyProfile':
       default:
         return (

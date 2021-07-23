@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectDisplay from './ProjectDisplay';
+import MyProjectDisplay from './MyProjectDisplay';
 
 export default function ProjectsContainer({
   projects,
@@ -7,15 +7,22 @@ export default function ProjectsContainer({
   setCurrentProject
 }) {
   const showProjects = () => {
-    return projects.map(project => {
-      return (
-        <ProjectDisplay
-          project={project}
-          setUser={setUser}
-          setCurrentProject={setCurrentProject}
-        />
-      );
-    });
+    return projects ? (
+      projects.map(project => {
+        return (
+          <MyProjectDisplay
+            project={project}
+            setUser={setUser}
+            setCurrentProject={setCurrentProject}
+          />
+        );
+      })
+    ) : (
+      <div>
+        <p>You haven't written any projects.</p>
+        <p>Start one by clicking "Create New Project"</p>
+      </div>
+    );
   };
   return <div className='ProjectsContainer'>{showProjects()}</div>;
 }

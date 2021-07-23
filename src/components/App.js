@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Header from './main/Header';
+import Login from './login/Login';
 
 import '../css/App.css';
 import Main from './main/Main';
@@ -10,8 +10,11 @@ function App() {
 
   return (
     <div className='App'>
-      <Header username={user?.username} />
-      <Main user={user} setUser={setUser} />
+      {user ? (
+        <Main user={user} setUser={setUser} />
+      ) : (
+        <Login setUser={setUser} />
+      )}
     </div>
   );
 }

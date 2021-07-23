@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../css/Main.css';
 
-import Login from '../login/Login';
 import MyProfile from '../myProfile/MyProfile';
+import Explore from '../explore/Explore';
+import Feed from '../feed/Feed';
 import ProjectEditor from '../projects/ProjectEditor';
+import Header from './Header';
 
 export default function Main({ user, setUser }) {
-  const [currentPage, setCurrentPage] = useState('MyProfile');
+  const [currentPage, setCurrentPage] = useState('Explore');
   const [currentProject, setCurrentProject] = useState();
 
   const showCurrentPage = () => {
-    if (!user) {
-      return <Login setUser={setUser} />;
-    }
-
     if (currentProject) {
       return (
         <ProjectEditor
@@ -37,6 +35,10 @@ export default function Main({ user, setUser }) {
             setUser={setUser}
           />
         );
+      case 'Feed':
+        return <Feed />;
+      case 'Explore':
+        return <Explore user={user} />;
       case 'MyProfile':
       default:
         return (
@@ -50,5 +52,15 @@ export default function Main({ user, setUser }) {
     }
   };
 
-  return <div className='Main'>{showCurrentPage()}</div>;
+  return (
+    <div className='Main'>
+      <Header
+        user={user}
+        setUser={setUser}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+      <div className='main-page-container'>{showCurrentPage()}</div>
+    </div>
+  );
 }

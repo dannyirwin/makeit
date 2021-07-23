@@ -12,6 +12,7 @@ export default function MyProfileNav({
     }
     return classNames;
   };
+
   return (
     <div className='MyProfileNav'>
       <button onClick={() => setCurrentPage('ProjectEditor')}>

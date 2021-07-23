@@ -1,0 +1,16 @@
+.Explore {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ExploreSearch {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.ExploreSearch > .selected {
+  color: white;
+  border: white;
+}

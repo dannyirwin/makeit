@@ -9,3 +9,8 @@
   width: 70ch;
   border: solid black 1px;
 }
+
+.nav-btn.selected {
+  background: var(--primary-color);
+  color: var(--white-color);
+}

@@ -10,7 +10,7 @@ export default function MyProfile({
   setUser,
   setCurrentProject
 }) {
-  const [currentContent, setCurrentContent] = useState('AboutMe');
+  const [currentContent, setCurrentContent] = useState('ProfileSummary');
   return (
     <div className='MyProfile'>
       <MyProfileNav

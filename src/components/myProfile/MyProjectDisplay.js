@@ -1,13 +1,13 @@
 import React from 'react';
 import { fetchDeleteProject } from '../../utilities/fetchUtilities';
 
-export default function ProjectDisplay({
+export default function MyProjectDisplay({
   project,
   setUser,
   setCurrentProject
 }) {
-  const { id, title, description, previewImage, author } = project;
-  const authorName = author.username;
+  const { id } = project;
+  //const authorName = author.username;
 
   const deleteProject = projectId => {
     fetchDeleteProject(projectId).then(({ user }) => setUser(user));
@@ -15,7 +15,7 @@ export default function ProjectDisplay({
 
   return (
     <div key={project.id}>
-      <p>{project.title + '-' + project.id}</p>
+      <p>{project.title + '-' + project.id + ' ' + project.is_published}</p>
       <button onClick={() => setCurrentProject(project)}>Edit</button>
       <button onClick={() => deleteProject(id)}>X</button>
     </div>

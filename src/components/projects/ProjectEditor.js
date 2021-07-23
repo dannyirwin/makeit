@@ -61,7 +61,6 @@ export default function ProjectEditor({
 
   const handleSaveAndPublishProject = e => {
     e.preventDefault();
-    setIsPublished(true);
     handleSaveProject(e).then(_ => {
       setCurrentPage('MyProfile');
       setCurrentProject();
@@ -70,10 +69,29 @@ export default function ProjectEditor({
 
   const handleExit = e => {
     e.preventDefault();
-    setCurrentPage('MyProfile');
     setCurrentProject();
+    setCurrentPage('MyProfile');
   };
 
+  const handlePublishButton = () => {
+    const toggleIsPublished = e => {
+      e.preventDefault();
+      setIsPublished(!isPublished);
+    };
+    return isPublished ? (
+      <div className='input-container'>
+        <p>Your project is currently Published</p>
+        <button onClick={toggleIsPublished}>Set to Draft</button>
+      </div>
+    ) : (
+      <div className='input-container'>
+        <p>Your project is currently Unpublished</p>
+        <button onClick={toggleIsPublished}>Publish Project</button>
+      </div>
+    );
+  };
+
+  console.log('rendering');
   return (
     <form className='ProjectEditor'>
       <div className='input-container'>
@@ -114,11 +132,10 @@ export default function ProjectEditor({
           required
         ></textarea>
       </div>
+      {handlePublishButton()}
       <div className='input-container'>
         <button onClick={handleSaveProject}>Save Project</button>
-        <button onClick={handleSaveAndPublishProject}>
-          Save and Publish Project
-        </button>
+        <button onClick={handleSaveAndPublishProject}>Save and Exit</button>
         <button onClick={handleExit}>Exit Without Saving</button>
       </div>
     </form>

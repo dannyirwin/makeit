@@ -77,10 +77,20 @@ const fetchDeleteProject = async projectId => {
   return response.json();
 };
 
+const fetchSearch = async (searchValue, filterType = 'projects') => {
+  if (searchValue) {
+    const searchString = '?search=' + searchValue.replace(' ', '+');
+    const url = baseUrl + filterType + searchString;
+    const response = await fetch(url, fetchOptions(null, 'GET'));
+    return response.json();
+  }
+};
+
 export {
   fetchCreateUser,
   fetchLogin,
   fetchPostProject,
   fetchPatchProject,
-  fetchDeleteProject
+  fetchDeleteProject,
+  fetchSearch
 };

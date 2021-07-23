@@ -1,12 +1,19 @@
 import React from 'react';
 
-import '../../css/Header.css';
+import HeaderNav from './HeaderNav';
+import UserIcon from './UserIcon';
 
-export default function Header({ username }) {
+export default function Header({ user, setUser, currentPage, setCurrentPage }) {
   return (
-    <div className='Header'>
-      <h1>MakeIt </h1>
-      {username ? <p> Welcome: {username} </p> : null}
+    <div className='header-container'>
+      <div className='Header'>
+        <h1 className='logo'>MakeIt </h1>
+        <UserIcon user={user} setUser={setUser} />
+
+        <HeaderNav setCurrentPage={setCurrentPage} currentPage={currentPage} />
+      </div>
+      <div className='header-bar'></div>
+      <div className='header-bar'></div>
     </div>
   );
 }

@@ -4,16 +4,27 @@ import MyProjects from './MyProjects';
 import ProfileSummary from './ProfileSummary';
 import SavedProjects from './SavedProjects';
 
-export default function MyProfileContent({ currentContent, user }) {
+export default function MyProfileContent({
+  currentContent,
+  user,
+  setUser,
+  setCurrentProject
+}) {
   const showCurrentContent = () => {
     switch (currentContent) {
       case 'MyProjects':
-        return <MyProjects />;
+        return (
+          <MyProjects
+            projects={user.myProjects}
+            setUser={setUser}
+            setCurrentProject={setCurrentProject}
+          />
+        );
       case 'SavedProjects':
-        return <SavedProjects />;
+        return <SavedProjects setUser={setUser} />;
       case 'ProfileSummary':
       default:
-        return <ProfileSummary />;
+        return <ProfileSummary user={user} setUser={setUser} />;
     }
   };
   return <div className='MyProfileContent'>{showCurrentContent()}</div>;

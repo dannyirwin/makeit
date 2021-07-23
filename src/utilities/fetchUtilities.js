@@ -2,11 +2,25 @@ const baseUrl = 'http://localhost:4000/';
 const usersUrl = baseUrl + 'users/';
 const projectsUrl = baseUrl + 'projects/';
 
-const fetchOptions = (body = '', token = '', method = 'POST') => {
+const getToken = () => {
+  return window.localStorage.getItem('token');
+};
+
+const fetchOptions = (body, method = 'POST') => {
+  if (!body) {
+    return {
+      method: method,
+      headers: {
+        Authorization: 'Bearer ' + getToken(),
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    };
+  }
   return {
     method: method,
     headers: {
-      Authorization: 'Bearer ' + token,
+      Authorization: 'Bearer ' + getToken(),
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
@@ -32,14 +46,41 @@ const fetchLogin = async (username, password) => {
       password: password
     }
   };
-  const response = await fetch(baseUrl + 'login/', fetchOptions(body));
+  let response = await fetch(baseUrl + 'login/', fetchOptions(body)).then(
+    response => response.json()
+  );
+  window.localStorage.setItem('token', response.token);
+  return response.user;
+};
+
+const fetchPostProject = async project => {
+  const body = { project: project };
+
+  const response = await fetch(projectsUrl, fetchOptions(body));
   return response.json();
 };
 
-const fetchSaveProject = async (project, token) => {
+const fetchPatchProject = async project => {
   const body = { project: project };
-  const response = await fetch(projectsUrl, fetchOptions(body, token));
-  return response;
+  const response = await fetch(
+    projectsUrl + project.id,
+    fetchOptions(body, 'PATCH')
+  );
+  return response.json();
 };
 
-export { fetchCreateUser, fetchLogin, fetchSaveProject };
+const fetchDeleteProject = async projectId => {
+  const response = await fetch(
+    projectsUrl + projectId,
+    fetchOptions(null, 'DELETE')
+  );
+  return response.json();
+};
+
+export {
+  fetchCreateUser,
+  fetchLogin,
+  fetchPostProject,
+  fetchPatchProject,
+  fetchDeleteProject
+};

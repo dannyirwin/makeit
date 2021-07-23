@@ -22,7 +22,7 @@ export default function MyProfileNav({
           className={classNames('ProfileSummary')}
           onClick={() => setCurrentContent('ProfileSummary')}
         >
-          About Me
+          My Profile
         </h3>
         <h3
           className={classNames('MyProjects')}

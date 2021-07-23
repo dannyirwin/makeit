@@ -4,7 +4,12 @@ import MyProfileNav from './MyProfileNav';
 
 import '../../css/MyProfile.css';
 
-export default function MyProfile({ user, setCurrentPage, setCurrentProject }) {
+export default function MyProfile({
+  user,
+  setCurrentPage,
+  setUser,
+  setCurrentProject
+}) {
   const [currentContent, setCurrentContent] = useState('AboutMe');
   return (
     <div className='MyProfile'>
@@ -13,7 +18,12 @@ export default function MyProfile({ user, setCurrentPage, setCurrentProject }) {
         currentContent={currentContent}
         setCurrentContent={setCurrentContent}
       />
-      <MyProfileContent currentContent={currentContent} />
+      <MyProfileContent
+        currentContent={currentContent}
+        user={user}
+        setUser={setUser}
+        setCurrentProject={setCurrentProject}
+      />
     </div>
   );
 }

@@ -1,5 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ProjectsContainer from './ProjectsContainer';
 
-export default function MyProjects() {
-  return <div className='MyProjects'>My Projects</div>;
+export default function MyProjects({ projects, setUser, setCurrentProject }) {
+  const [shownProjects, setShownProjects] = useState(projects);
+
+  return (
+    <div className='MyProjects'>
+      <ProjectsContainer
+        projects={projects}
+        setUser={setUser}
+        setCurrentProject={setCurrentProject}
+      />
+    </div>
+  );
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 export default function LoginForm({
-  setUserAndToken,
   setIsNewUser,
   setUsername,
   setPassword,

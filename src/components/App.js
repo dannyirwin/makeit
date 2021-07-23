@@ -7,17 +7,11 @@ import Main from './main/Main';
 
 function App() {
   const [user, setUser] = useState();
-  const [token, setToken] = useState();
-
-  const setUserAndToken = (user, token) => {
-    setUser(user);
-    setToken(token);
-  };
 
   return (
     <div className='App'>
       <Header username={user?.username} />
-      <Main setUserAndToken={setUserAndToken} user={user} token={token} />
+      <Main user={user} setUser={setUser} />
     </div>
   );
 }

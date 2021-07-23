@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
-import { fetchSaveProject } from '../../utilities/fetchUtilities';
+import {
+  fetchPostProject,
+  fetchPatchProject
+} from '../../utilities/fetchUtilities';
 
 import '../../css/ProjectEditor.css';
 
@@ -8,7 +11,8 @@ export default function ProjectEditor({
   user,
   project,
   setCurrentPage,
-  token
+  setCurrentProject,
+  setUser
 }) {
   const [title, setTitle] = useState(project?.title);
   const [description, setDescription] = useState(project?.description);
@@ -17,9 +21,10 @@ export default function ProjectEditor({
   const [isPublished, setIsPublished] = useState(
     project?.is_published || false
   );
+  const [id, setId] = useState(project?.id || null);
 
   const buildNewProject = () => {
-    return {
+    const newProject = {
       title,
       description,
       preview_image_url: previewImage,
@@ -27,23 +32,46 @@ export default function ProjectEditor({
       is_published: isPublished,
       author_id: user.id
     };
+    if (id) {
+      newProject.id = id;
+    }
+    return newProject;
   };
 
-  const handleSaveProject = e => {
+  const handleSaveProject = async e => {
     e.preventDefault();
-
-    fetchSaveProject(buildNewProject(), token);
+    if (project?.id) {
+      return await fetchPatchProject(buildNewProject()).then(
+        ({ user, project }) => {
+          setUser(user);
+          setCurrentProject(project);
+          setId(project.id);
+        }
+      );
+    } else {
+      return await fetchPostProject(buildNewProject()).then(
+        ({ user, project }) => {
+          setUser(user);
+          setCurrentProject(project);
+          setId(project.id);
+        }
+      );
+    }
   };
 
   const handleSaveAndPublishProject = e => {
     e.preventDefault();
     setIsPublished(true);
-    handleSaveProject(e);
+    handleSaveProject(e).then(_ => {
+      setCurrentPage('MyProfile');
+      setCurrentProject();
+    });
   };
 
   const handleExit = e => {
     e.preventDefault();
     setCurrentPage('MyProfile');
+    setCurrentProject();
   };
 
   return (

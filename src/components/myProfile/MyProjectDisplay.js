@@ -14,7 +14,7 @@ export default function MyProjectDisplay({
   };
 
   return (
-    <div key={project.id}>
+    <div>
       <p>{project.title + '-' + project.id + ' ' + project.is_published}</p>
       <button onClick={() => setCurrentProject(project)}>Edit</button>
       <button onClick={() => deleteProject(id)}>X</button>

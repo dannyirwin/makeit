@@ -3,6 +3,7 @@ import MyProjects from './MyProjects';
 
 import ProfileSummary from './ProfileSummary';
 import SavedProjects from './SavedProjects';
+import MyMakers from './MyMakers';
 
 export default function MyProfileContent({
   currentContent,
@@ -21,7 +22,9 @@ export default function MyProfileContent({
           />
         );
       case 'SavedProjects':
-        return <SavedProjects setUser={setUser} />;
+        return <SavedProjects user={user} setUser={setUser} />;
+      case 'MyMakers':
+        return <MyMakers user={user} setUser={setUser} />;
       case 'ProfileSummary':
       default:
         return <ProfileSummary user={user} setUser={setUser} />;

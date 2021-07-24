@@ -1,6 +1,6 @@
 import React from 'react';
-import ProjectPreview from './ProjectPreview';
-import UserPreview from './UserPreview';
+import ProjectPreview from '../ProjectPreview';
+import UserPreview from '../UserPreview';
 
 export default function SearchResults({
   searchResults,
@@ -15,7 +15,6 @@ export default function SearchResults({
     : null;
 
   const showSearchResults = () => {
-    console.log(searchResults);
     if (!searchResults) {
       return null;
     }
@@ -32,7 +31,9 @@ export default function SearchResults({
         });
       case 'projects':
         return searchResults.projects.map(project => {
-          return <ProjectPreview project={project} />;
+          return (
+            <ProjectPreview project={project} user={user} setUser={setUser} />
+          );
         });
       default:
         return <p>No results found, try another search</p>;

@@ -1,12 +1,12 @@
 import React from 'react';
-import ProjectsContainer from './ProjectsContainer';
+import MyProjectsContainer from './MyProjectsContainer';
 
 export default function MyProjects({ projects, setUser, setCurrentProject }) {
   //const [shownProjects, setShownProjects] = useState(projects);
 
   return (
     <div className='MyProjects'>
-      <ProjectsContainer
+      <MyProjectsContainer
         projects={projects}
         setUser={setUser}
         setCurrentProject={setCurrentProject}

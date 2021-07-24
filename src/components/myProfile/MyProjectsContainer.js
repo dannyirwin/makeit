@@ -1,7 +1,7 @@
 import React from 'react';
 import MyProjectDisplay from './MyProjectDisplay';
 
-export default function ProjectsContainer({
+export default function MyProjectsContainer({
   projects,
   setUser,
   setCurrentProject
@@ -11,6 +11,7 @@ export default function ProjectsContainer({
       projects.map(project => {
         return (
           <MyProjectDisplay
+            key={project.id}
             project={project}
             setUser={setUser}
             setCurrentProject={setCurrentProject}
@@ -24,5 +25,5 @@ export default function ProjectsContainer({
       </div>
     );
   };
-  return <div className='ProjectsContainer'>{showProjects()}</div>;
+  return <div className='MyProjectsContainer'>{showProjects()}</div>;
 }

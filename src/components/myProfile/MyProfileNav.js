@@ -32,10 +32,16 @@ export default function MyProfileNav({
           My Projects
         </h3>
         <h3
+          className={classNames('MyMakers')}
+          onClick={() => setCurrentContent('MyMakers')}
+        >
+          My Makers
+        </h3>
+        <h3
           className={classNames('SavedProjects')}
           onClick={() => setCurrentContent('SavedProjects')}
         >
-          Saved Projects
+          Bookmarked Projects
         </h3>
       </nav>
     </div>

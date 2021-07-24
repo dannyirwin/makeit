@@ -90,8 +90,6 @@ export default function ProjectEditor({
       </div>
     );
   };
-
-  console.log('rendering');
   return (
     <form className='ProjectEditor'>
       <div className='input-container'>

@@ -1,0 +1,8 @@
+.ViewProject {
+  max-width: 70ch;
+  margin: auto;
+}
+
+.ViewProject > img {
+  max-width: 100%;
+}

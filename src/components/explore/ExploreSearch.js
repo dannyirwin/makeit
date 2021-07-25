@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchSearch } from '../../utilities/fetchUtilities';
 
 export default function ExploreSearch({ setSearchResults }) {
   const [searchType, setSearchType] = useState('projects');
-  const [searchValue, setSearchValue] = useState();
+  const [searchValue, setSearchValue] = useState('');
 
   const handleSearch = e => {
     e.preventDefault();
     fetchSearch(searchValue, searchType).then(users => {
-      setSearchResults(users);
-      e.target.reset();
-      setSearchValue();
+      setSearchResults(users || []);
     });
   };
 
@@ -26,6 +24,8 @@ export default function ExploreSearch({ setSearchResults }) {
     }
     return classNames;
   };
+
+  useEffect(() => {}, [searchValue]);
 
   return (
     <form className='ExploreSearch' onSubmit={handleSearch}>
@@ -44,7 +44,9 @@ export default function ExploreSearch({ setSearchResults }) {
       </button>
       <label htmlFor='searchValue'></label>
       <input
-        onChange={e => setSearchValue(e.target.value)}
+        onChange={e => {
+          setSearchValue(e.target.value);
+        }}
         name='searchValue'
         placeholder='Search...'
         required

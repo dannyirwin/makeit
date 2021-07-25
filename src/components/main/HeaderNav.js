@@ -1,34 +1,26 @@
 import React from 'react';
+import NavBtn from './NavBtn';
 
-export default function HeaderNav({ currentPage, setCurrentPage }) {
-  const classNames = buttonValue => {
-    let classNames = '';
-    if (buttonValue === currentPage) {
-      classNames += ' selected';
-    }
-    return classNames;
+export default function HeaderNav({
+  currentPage,
+  setCurrentPage,
+  setCurrentProject
+}) {
+  const pagesArr = ['Feed', 'MyProfile', 'Explore'];
+
+  const showNavButtons = () => {
+    return pagesArr.map((pageString, index) => {
+      return (
+        <NavBtn
+          key={index}
+          currentPage={currentPage}
+          pageString={pageString}
+          setCurrentPage={setCurrentPage}
+          setCurrentProject={setCurrentProject}
+        />
+      );
+    });
   };
 
-  return (
-    <div className='HeaderNav'>
-      <button
-        className={classNames('MyProfile')}
-        onClick={() => setCurrentPage('MyProfile')}
-      >
-        My Profile
-      </button>
-      <button
-        className={classNames('Explore')}
-        onClick={() => setCurrentPage('Explore')}
-      >
-        Explore
-      </button>
-      <button
-        className={classNames('Feed')}
-        onClick={() => setCurrentPage('Feed')}
-      >
-        Feed
-      </button>
-    </div>
-  );
+  return <div className='HeaderNav'>{showNavButtons()}</div>;
 }

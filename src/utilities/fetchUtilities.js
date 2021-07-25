@@ -30,15 +30,20 @@ const fetchOptions = (body, method = 'POST') => {
   };
 };
 
-const fetchCreateUser = async (username, password) => {
+const fetchCreateUser = async (username, password, aboutMe) => {
   const body = {
     user: {
       username: username,
-      password: password
+      password: password,
+      about_me: aboutMe
     }
   };
-  const response = await fetch(usersUrl, fetchOptions(body));
-  return response.json();
+  const response = await fetch(usersUrl, fetchOptions(body)).then(response =>
+    response.json()
+  );
+
+  window.localStorage.setItem('token', response.token);
+  return response.user;
 };
 
 const fetchLogin = async (username, password) => {
@@ -84,7 +89,7 @@ const fetchSearch = async (searchValue, filterType = 'projects') => {
     const searchString = '?search=' + searchValue.replace(' ', '+');
     const url = baseUrl + filterType + searchString;
     const response = await fetch(url, fetchOptions(null, 'GET'));
-    return response.json();
+    return await response.json();
   }
 };
 

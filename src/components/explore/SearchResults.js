@@ -23,7 +23,7 @@ export default function SearchResults({
         return searchResults.users.map(searchResultUser => {
           return (
             <UserPreview
-              searchResultUser={searchResultUser}
+              otherUser={searchResultUser}
               user={user}
               setUser={setUser}
             />

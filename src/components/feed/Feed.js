@@ -1,5 +1,23 @@
 import React from 'react';
 
-export default function Feed() {
-  return <div>Feed</div>;
+import ProjectsFeed from './ProjectsFeed';
+import MakersFeed from './MakersFeed';
+
+export default function Feed({
+  user,
+  setUser,
+  setCurrentPage,
+  setCurrentProject
+}) {
+  return (
+    <div>
+      <ProjectsFeed
+        user={user}
+        setUser={setUser}
+        setCurrentPage={setCurrentPage}
+        setCurrentProject={setCurrentProject}
+      />
+      <MakersFeed />
+    </div>
+  );
 }

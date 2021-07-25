@@ -16,7 +16,6 @@ export default function ToggleBookmarkProjectButton({
   const handleUnfollowUser = () => {
     fetchUnfollowProject(project.id, user.id).then(({ user }) => setUser(user));
   };
-
   const myFollowingIds = user.followed_projects.map(project => project.id);
 
   return myFollowingIds.includes(project.id) ? (

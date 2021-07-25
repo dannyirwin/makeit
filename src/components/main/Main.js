@@ -6,22 +6,28 @@ import Explore from '../explore/Explore';
 import Feed from '../feed/Feed';
 import ProjectEditor from '../projects/ProjectEditor';
 import Header from './Header';
+import ViewProject from '../ViewProject';
 
 export default function Main({ user, setUser }) {
-  const [currentPage, setCurrentPage] = useState('Explore');
+  const [currentPage, setCurrentPage] = useState('Feed');
   const [currentProject, setCurrentProject] = useState();
 
   const showCurrentPage = () => {
     if (currentProject) {
-      return (
-        <ProjectEditor
-          user={user}
-          project={currentProject}
-          setCurrentPage={setCurrentPage}
-          setCurrentProject={setCurrentProject}
-          setUser={setUser}
-        />
-      );
+      switch (currentPage) {
+        case 'ProjectEditor':
+          return (
+            <ProjectEditor
+              user={user}
+              project={currentProject}
+              setCurrentPage={setCurrentPage}
+              setCurrentProject={setCurrentProject}
+              setUser={setUser}
+            />
+          );
+        default:
+          return <ViewProject project={currentProject} />;
+      }
     }
 
     switch (currentPage) {
@@ -36,7 +42,14 @@ export default function Main({ user, setUser }) {
           />
         );
       case 'Feed':
-        return <Feed />;
+        return (
+          <Feed
+            user={user}
+            setUser={setUser}
+            setCurrentPage={setCurrentPage}
+            setCurrentProject={setCurrentProject}
+          />
+        );
       case 'Explore':
         return <Explore user={user} setUser={setUser} />;
       case 'MyProfile':
@@ -59,6 +72,7 @@ export default function Main({ user, setUser }) {
         setUser={setUser}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
+        setCurrentProject={setCurrentProject}
       />
       <div className='main-page-container'>{showCurrentPage()}</div>
     </div>

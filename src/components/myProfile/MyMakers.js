@@ -3,7 +3,6 @@ import React from 'react';
 import UserPreview from '../UserPreview';
 
 export default function MyMakers({ user, setUser }) {
-  console.log(user.following);
   const showMyMakers = () => {
     return user.following.map(otherUser => {
       return (
@@ -11,5 +10,12 @@ export default function MyMakers({ user, setUser }) {
       );
     });
   };
-  return <div>{showMyMakers()}</div>;
+  return user.following.length > 0 ? (
+    <div> {showMyMakers()} </div>
+  ) : (
+    <div>
+      <p>You aren't following any Makers.</p>
+      <p>Click Explore to find Makers to follow.</p>
+    </div>
+  );
 }

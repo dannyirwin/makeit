@@ -4,6 +4,7 @@ export default function CreateNewUser({
   setUsername,
   setPassword,
   setIsNewUser,
+  setAboutMe,
   handleSignUp
 }) {
   const [errorMessage, setErrorMessage] = useState('');
@@ -40,9 +41,18 @@ export default function CreateNewUser({
           required
         ></input>
       </div>
+
       <div className='input-container'>
         <label htmlFor='confirmPassword'>Confirm Password:</label>
         <input type='password' name='confirmPassword' required></input>
+      </div>
+      <div className='input-container'>
+        <label htmlFor='aboutMe'>About Me:</label>
+        <textarea
+          onChange={e => setAboutMe(e.target.value)}
+          name='aboutMe'
+          required
+        ></textarea>
       </div>
       <p className='login-error-display'>{errorMessage}</p>
       <div className='input-container'>

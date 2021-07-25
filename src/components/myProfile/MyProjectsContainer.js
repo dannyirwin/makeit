@@ -7,7 +7,7 @@ export default function MyProjectsContainer({
   setCurrentProject
 }) {
   const showProjects = () => {
-    return projects ? (
+    return projects?.length > 0 ? (
       projects.map(project => {
         return (
           <MyProjectDisplay

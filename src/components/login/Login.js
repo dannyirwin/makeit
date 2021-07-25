@@ -7,9 +7,10 @@ import { fetchCreateUser, fetchLogin } from '../../utilities/fetchUtilities';
 import '../../css/Login.css';
 
 export default function Login({ setUser }) {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [isNewUser, setIsNewUser] = useState(false);
+  const [aboutMe, setAboutMe] = useState('');
 
   const handleLogin = e => {
     e.preventDefault();
@@ -17,7 +18,9 @@ export default function Login({ setUser }) {
   };
   const handleSignUp = e => {
     e.preventDefault();
-    fetchCreateUser(username, password).then(user => setUser(user));
+    fetchCreateUser(username, password, aboutMe).then(user => {
+      setUser(user);
+    });
   };
   return (
     <div className='Login'>
@@ -26,6 +29,7 @@ export default function Login({ setUser }) {
           setIsNewUser={setIsNewUser}
           setUsername={setUsername}
           setPassword={setPassword}
+          setAboutMe={setAboutMe}
           handleSignUp={handleSignUp}
         />
       ) : (

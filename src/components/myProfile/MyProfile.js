@@ -23,6 +23,7 @@ export default function MyProfile({
         user={user}
         setUser={setUser}
         setCurrentProject={setCurrentProject}
+        setCurrentPage={setCurrentPage}
       />
     </div>
   );

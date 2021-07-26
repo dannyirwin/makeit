@@ -3,9 +3,10 @@ import { useState } from 'react';
 import {
   fetchPostProject,
   fetchPatchProject
-} from '../../utilities/fetchUtilities';
+} from '../../../utilities/fetchUtilities';
 
-import '../../css/ProjectEditor.css';
+import '../../../css/ProjectEditor.css';
+import TextEditor from './TextEditor';
 
 export default function ProjectEditor({
   user,
@@ -62,8 +63,8 @@ export default function ProjectEditor({
   const handleSaveAndPublishProject = e => {
     e.preventDefault();
     handleSaveProject(e).then(_ => {
-      setCurrentPage('MyProfile');
       setCurrentProject();
+      setCurrentPage('MyProfile');
     });
   };
 
@@ -91,7 +92,7 @@ export default function ProjectEditor({
     );
   };
   return (
-    <form className='ProjectEditor'>
+    <div className='ProjectEditor'>
       <div className='input-container'>
         <label htmlFor='title'>Project Title</label>
         <input
@@ -120,22 +121,17 @@ export default function ProjectEditor({
           value={previewImage}
         ></input>
       </div>
-      <div className='input-container'>
-        <label htmlFor='password'>Content</label>
-        <textarea
-          onChange={e => setContent(e.target.value)}
-          type='text'
-          name='password'
-          value={content}
-          required
-        ></textarea>
-      </div>
+      <TextEditor
+        showTools={true}
+        HTMLContent={content}
+        setContent={setContent}
+      />
       {handlePublishButton()}
       <div className='input-container'>
         <button onClick={handleSaveProject}>Save Project</button>
         <button onClick={handleSaveAndPublishProject}>Save and Exit</button>
         <button onClick={handleExit}>Exit Without Saving</button>
       </div>
-    </form>
+    </div>
   );
 }

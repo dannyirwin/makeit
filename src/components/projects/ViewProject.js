@@ -24,7 +24,10 @@ export default function ViewProject({
         src={project?.preview_image_url}
         alt={`project by ${project?.author.username}`}
       ></img>
-      <p>{project?.content}</p>
+      <div
+        className='project-content'
+        dangerouslySetInnerHTML={{ __html: project?.content }}
+      ></div>
       <CommentsContainer
         project={project || currentProject}
         user={user}

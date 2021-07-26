@@ -4,7 +4,8 @@ import MyProjectDisplay from './MyProjectDisplay';
 export default function MyProjectsContainer({
   projects,
   setUser,
-  setCurrentProject
+  setCurrentProject,
+  setCurrentPage
 }) {
   const showProjects = () => {
     return projects?.length > 0 ? (
@@ -15,6 +16,7 @@ export default function MyProjectsContainer({
             project={project}
             setUser={setUser}
             setCurrentProject={setCurrentProject}
+            setCurrentPage={setCurrentPage}
           />
         );
       })

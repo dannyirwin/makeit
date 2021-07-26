@@ -1,3 +1,69 @@
 .ProjectEditor {
   margin: auto;
 }
+
+.TextEditor {
+  border: 1px solid grey;
+  font-size: 14px;
+  padding: 3em;
+  margin: auto;
+  max-width: 70ch;
+}
+
+.editor-editor {
+  border-top: 1px solid grey;
+  cursor: text;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.editor-buttons-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+.public-DraftEditorPlaceholder-root,
+.public-DraftEditor-content {
+  margin: 0 -15px -15px;
+  padding: 15px;
+}
+
+.public-DraftEditor-content {
+  min-height: 100px;
+}
+
+.public-DraftEditorPlaceholder-root {
+  display: none;
+}
+
+.editor-blockquote {
+  border-left: 5px solid grey;
+  color: #444;
+  font-style: italic;
+  margin: 16px 0;
+  padding: 10px 20px;
+}
+
+.public-DraftStyleDefault-pre {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  padding: 20px;
+}
+
+.editor-controls {
+  font-size: 14px;
+  user-select: none;
+}
+
+.editor-styleButton {
+  color: grey;
+}
+
+.editor-activeButton {
+  background: red;
+}
+
+.DraftEditor-root {
+  min-height: 50px;
+}

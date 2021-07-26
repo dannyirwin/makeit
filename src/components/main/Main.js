@@ -4,7 +4,7 @@ import '../../css/Main.css';
 import MyProfile from '../myProfile/MyProfile';
 import Explore from '../explore/Explore';
 import Feed from '../feed/Feed';
-import ProjectEditor from '../projects/ProjectEditor';
+import ProjectEditor from '../projects/projectEditor/ProjectEditor';
 import Header from './Header';
 import ViewProject from '../projects/ViewProject';
 

@@ -9,7 +9,8 @@ export default function MyProfileContent({
   currentContent,
   user,
   setUser,
-  setCurrentProject
+  setCurrentProject,
+  setCurrentPage
 }) {
   const showCurrentContent = () => {
     switch (currentContent) {
@@ -19,6 +20,7 @@ export default function MyProfileContent({
             projects={user.myProjects}
             setUser={setUser}
             setCurrentProject={setCurrentProject}
+            setCurrentPage={setCurrentPage}
           />
         );
       case 'SavedProjects':

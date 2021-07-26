@@ -3,6 +3,7 @@ const usersUrl = baseUrl + 'users/';
 const projectsUrl = baseUrl + 'projects/';
 const followUserUrl = baseUrl + 'follow/';
 const followProjectUrl = baseUrl + 'userProjects/';
+const commentsUrl = baseUrl + 'comments/';
 
 const getToken = () => {
   return window.localStorage.getItem('token');
@@ -58,6 +59,14 @@ const fetchLogin = async (username, password) => {
   );
   window.localStorage.setItem('token', response.token);
   return response.user;
+};
+
+const fetchGetProject = async projectId => {
+  const response = await fetch(
+    projectsUrl + projectId,
+    fetchOptions(null, 'GET')
+  );
+  return response.json();
 };
 
 const fetchPostProject = async project => {
@@ -137,6 +146,27 @@ const fetchUnfollowProject = async (projectId, userId) => {
   return response.json();
 };
 
+const fetchPostComment = async (content, userId, projectId) => {
+  console.log(projectId);
+  const body = {
+    comment: {
+      user_id: userId,
+      project_id: projectId,
+      content: content
+    }
+  };
+  const response = await fetch(commentsUrl, fetchOptions(body));
+  return response.json();
+};
+
+const fetchDeleteComment = async commentId => {
+  const response = await fetch(
+    commentsUrl + commentId,
+    fetchOptions(null, 'DELETE')
+  );
+  return response.json();
+};
+
 export {
   fetchCreateUser,
   fetchLogin,
@@ -147,5 +177,8 @@ export {
   fetchFollowUser,
   fetchUnfollowUser,
   fetchFollowProject,
-  fetchUnfollowProject
+  fetchUnfollowProject,
+  fetchPostComment,
+  fetchDeleteComment,
+  fetchGetProject
 };

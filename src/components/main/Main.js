@@ -6,7 +6,7 @@ import Explore from '../explore/Explore';
 import Feed from '../feed/Feed';
 import ProjectEditor from '../projects/ProjectEditor';
 import Header from './Header';
-import ViewProject from '../ViewProject';
+import ViewProject from '../projects/ViewProject';
 
 export default function Main({ user, setUser }) {
   const [currentPage, setCurrentPage] = useState('Feed');
@@ -26,7 +26,13 @@ export default function Main({ user, setUser }) {
             />
           );
         default:
-          return <ViewProject project={currentProject} />;
+          return (
+            <ViewProject
+              currentProject={currentProject}
+              user={user}
+              setCurrentProject={setCurrentProject}
+            />
+          );
       }
     }
 

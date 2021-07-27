@@ -5,9 +5,12 @@
 .TextEditor {
   border: 1px solid grey;
   font-size: 14px;
-  padding: 3em;
+  padding: 5ch;
   margin: auto;
-  max-width: 70ch;
+  max-width: 80ch;
+  text-align: left;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .editor-editor {
@@ -21,12 +24,11 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 0.5rem;
-  position: relative;
+  position: absolute;
 }
 .public-DraftEditorPlaceholder-root,
 .public-DraftEditor-content {
-  margin: 0 -15px -15px;
-  padding: 15px;
+  margin-top: 50px;
 }
 
 .public-DraftEditor-content {
@@ -58,12 +60,26 @@
 
 .editor-styleButton {
   color: grey;
+  border-color: grey;
+  background: var(--white-color);
+}
+
+.editor-styleButton:hover {
+  color: black;
+  border-color: black;
+  background: var(--white-color);
 }
 
 .editor-activeButton {
-  background: red;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .DraftEditor-root {
   min-height: 50px;
+}
+
+.description-input {
+  width: 70ch;
+  font-family: inherit;
 }

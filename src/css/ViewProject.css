@@ -1,8 +1,51 @@
 .ViewProject {
-  max-width: 70ch;
   margin: auto;
+  max-width: 90ch;
+  text-align: left;
 }
 
 .ViewProject > img {
   max-width: 100%;
+  max-height: 90vh;
+}
+
+.ProjectImage > img {
+  max-width: 100%;
+}
+
+.article-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.ProjectImages {
+  max-width: 30ch;
+}
+.ProjectImage {
+  margin: 1em;
+}
+
+.ProjectContent {
+  margin: 0 0.5em;
+  font-size: 20px;
+}
+
+.ProjectContent > h3 {
+  font-size: 40px;
+  max-height: 100px;
+}
+
+.HTMLContent > p {
+  text-indent: 2em;
+  padding: 0 1em;
+}
+
+.HTMLContent > blockquote {
+  border-left: 5px solid grey;
+  color: #444;
+  font-style: italic;
+  margin: 16px auto;
+  padding: 10px 0;
+  text-indent: 2em;
 }

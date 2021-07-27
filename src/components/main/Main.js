@@ -9,33 +9,10 @@ import Header from './Header';
 import ViewProject from '../projects/ViewProject';
 
 export default function Main({ user, setUser }) {
-  const [currentPage, setCurrentPage] = useState('Feed');
+  const [currentPage, setCurrentPage] = useState('MyProfile');
   const [currentProject, setCurrentProject] = useState();
 
   const showCurrentPage = () => {
-    if (currentProject) {
-      switch (currentPage) {
-        case 'ProjectEditor':
-          return (
-            <ProjectEditor
-              user={user}
-              project={currentProject}
-              setCurrentPage={setCurrentPage}
-              setCurrentProject={setCurrentProject}
-              setUser={setUser}
-            />
-          );
-        default:
-          return (
-            <ViewProject
-              currentProject={currentProject}
-              user={user}
-              setCurrentProject={setCurrentProject}
-            />
-          );
-      }
-    }
-
     switch (currentPage) {
       case 'ProjectEditor':
         return (
@@ -45,6 +22,15 @@ export default function Main({ user, setUser }) {
             setCurrentPage={setCurrentPage}
             setCurrentProject={setCurrentProject}
             setUser={setUser}
+          />
+        );
+
+      case 'ViewProject':
+        return (
+          <ViewProject
+            currentProject={currentProject}
+            user={user}
+            setCurrentProject={setCurrentProject}
           />
         );
       case 'Feed':

@@ -1,5 +1,8 @@
 import React from 'react';
-import { fetchDeleteProject } from '../../utilities/fetchUtilities';
+import {
+  fetchDeleteProject,
+  fetchGetProject
+} from '../../utilities/fetchUtilities';
 
 export default function MyProjectDisplay({
   project,
@@ -15,13 +18,17 @@ export default function MyProjectDisplay({
   };
 
   const handleEdit = () => {
-    setCurrentPage('ProjectEditor');
-    setCurrentProject(project);
+    fetchGetProject(project.id).then(response => {
+      setCurrentProject(response);
+      setCurrentPage('ProjectEditor');
+    });
   };
 
   const handleView = () => {
-    setCurrentPage('ViewProject');
-    setCurrentProject(project);
+    fetchGetProject(project.id).then(response => {
+      setCurrentProject(response);
+      setCurrentPage('ViewProject');
+    });
   };
 
   return (

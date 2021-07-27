@@ -15,17 +15,6 @@ import BlockStyleControls from './BlockStyleControls';
 import InlineStyleControls from './InlineStyleControls';
 
 export default function TextEditor({ showTools, HTMLContent, setContent }) {
-  //console.log('init content', HTMLContent, ContentState);
-  //console.log('blank', EditorState.createEmpty().getCurrentContent());
-  //console.log('init', ContentState.convertFromHTML('<p>hi</>p'));
-  // const initialContent = HTMLContent
-  //   ? EditorState.createWithContent(
-  //       ContentState.createFromBlockArray(
-  //         ContentState.convertFromHTML(HTMLContent)
-  //       )
-  //     )
-  //   : EditorState.createEmpty();
-
   const initialContent = () => {
     if (HTMLContent) {
       const blocksFromHTML = convertFromHTML(HTMLContent);
@@ -46,7 +35,6 @@ export default function TextEditor({ showTools, HTMLContent, setContent }) {
     const rawContent = convertToRaw(editorState.getCurrentContent());
     const htmlContent = draftToHtml(rawContent);
     setEditorState(editorState);
-    console.log(htmlContent);
     setContent(htmlContent);
   };
 

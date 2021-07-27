@@ -4,6 +4,7 @@ const projectsUrl = baseUrl + 'projects/';
 const followUserUrl = baseUrl + 'follow/';
 const followProjectUrl = baseUrl + 'userProjects/';
 const commentsUrl = baseUrl + 'comments/';
+const imagesUrl = baseUrl + 'images/';
 
 const getToken = () => {
   return window.localStorage.getItem('token');
@@ -78,6 +79,7 @@ const fetchPostProject = async project => {
 
 const fetchPatchProject = async project => {
   const body = { project: project };
+  console.log(project);
   const response = await fetch(
     projectsUrl + project.id,
     fetchOptions(body, 'PATCH')
@@ -147,7 +149,6 @@ const fetchUnfollowProject = async (projectId, userId) => {
 };
 
 const fetchPostComment = async (content, userId, projectId) => {
-  console.log(projectId);
   const body = {
     comment: {
       user_id: userId,
@@ -167,6 +168,22 @@ const fetchDeleteComment = async commentId => {
   return response.json();
 };
 
+const fetchPostImage = async image => {
+  const body = { image: image };
+  const response = await fetch(imagesUrl, fetchOptions(body)).then(response =>
+    response.json()
+  );
+  console.log(response);
+  return response;
+};
+const fetchDeleteImage = async commentId => {
+  const response = await fetch(
+    imagesUrl + commentId,
+    fetchOptions(null, 'DELETE')
+  );
+  return response.json();
+};
+
 export {
   fetchCreateUser,
   fetchLogin,
@@ -180,5 +197,7 @@ export {
   fetchUnfollowProject,
   fetchPostComment,
   fetchDeleteComment,
-  fetchGetProject
+  fetchGetProject,
+  fetchPostImage,
+  fetchDeleteImage
 };

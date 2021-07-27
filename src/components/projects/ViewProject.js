@@ -4,6 +4,8 @@ import CommentsContainer from './CommentsContainer';
 
 import '../../css/ViewProject.css';
 import { fetchGetProject } from '../../utilities/fetchUtilities';
+import ViewProjectImages from './ViewProjectImages';
+import ViewProjectContent from './ViewProjectContent';
 
 export default function ViewProject({
   currentProject,
@@ -18,16 +20,18 @@ export default function ViewProject({
 
   return (
     <div className='ViewProject'>
-      <h3>{project?.title}</h3>
-      <h4>By: {project?.author.username}</h4>
-      <img
-        src={project?.preview_image_url}
-        alt={`project by ${project?.author.username}`}
-      ></img>
-      <div
-        className='project-content'
-        dangerouslySetInnerHTML={{ __html: project?.content }}
-      ></div>
+      {project?.images.length > 0 ? (
+        <img
+          src={project?.images[0].image_url}
+          alt={`project by ${project?.author.username}`}
+        ></img>
+      ) : null}
+      <div className='article-container'>
+        {currentProject?.images.length > 1 && (
+          <ViewProjectImages images={currentProject?.images} />
+        )}
+        <ViewProjectContent project={project} />
+      </div>
       <CommentsContainer
         project={project || currentProject}
         user={user}

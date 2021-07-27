@@ -72,14 +72,13 @@ const fetchGetProject = async projectId => {
 
 const fetchPostProject = async project => {
   const body = { project: project };
-
   const response = await fetch(projectsUrl, fetchOptions(body));
   return response.json();
 };
 
 const fetchPatchProject = async project => {
   const body = { project: project };
-  console.log(project);
+  console.log('---Patching', project.id);
   const response = await fetch(
     projectsUrl + project.id,
     fetchOptions(body, 'PATCH')
@@ -156,8 +155,10 @@ const fetchPostComment = async (content, userId, projectId) => {
       content: content
     }
   };
-  const response = await fetch(commentsUrl, fetchOptions(body));
-  return response.json();
+  const response = await fetch(commentsUrl, fetchOptions(body)).then(res =>
+    res.json()
+  );
+  return response;
 };
 
 const fetchDeleteComment = async commentId => {

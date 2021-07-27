@@ -24,12 +24,33 @@ export default function MyProfileContent({
           />
         );
       case 'SavedProjects':
-        return <SavedProjects user={user} setUser={setUser} />;
+        return (
+          <SavedProjects
+            user={user}
+            setUser={setUser}
+            setCurrentProject={setCurrentProject}
+            setCurrentPage={setCurrentPage}
+          />
+        );
       case 'MyMakers':
-        return <MyMakers user={user} setUser={setUser} />;
+        return (
+          <MyMakers
+            user={user}
+            setUser={setUser}
+            setCurrentProject={setCurrentProject}
+            setCurrentPage={setCurrentPage}
+          />
+        );
       case 'ProfileSummary':
       default:
-        return <ProfileSummary user={user} setUser={setUser} />;
+        return (
+          <ProfileSummary
+            user={user}
+            setUser={setUser}
+            setCurrentProject={setCurrentProject}
+            setCurrentPage={setCurrentPage}
+          />
+        );
     }
   };
   return <div className='MyProfileContent'>{showCurrentContent()}</div>;

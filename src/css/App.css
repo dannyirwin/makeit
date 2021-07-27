@@ -26,6 +26,11 @@ textarea {
   margin: auto 0.5em;
 }
 
+button,
+input[type='submit'],
+.nav-btn {
+  cursor: pointer;
+}
 .input-container {
   margin: 2em;
   display: flex;

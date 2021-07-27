@@ -14,13 +14,13 @@ export default function Header({
     <div className='header-container'>
       <div className='Header'>
         <h1 className='logo'>MakeIt </h1>
-        <UserIcon user={user} setUser={setUser} />
 
         <HeaderNav
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
           setCurrentProject={setCurrentProject}
         />
+        <UserIcon user={user} setUser={setUser} />
       </div>
       <div className='header-bar'></div>
       <div className='header-bar'></div>

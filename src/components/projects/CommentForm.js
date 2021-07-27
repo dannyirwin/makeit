@@ -21,7 +21,7 @@ export default function CommentForm({ projectId, userId, setProject }) {
         onChange={e => setContent(e.target.value)}
         required
       ></input>
-      <input type='submit' value='Comment'></input>
+      <input type='submit' value='Leave a Comment'></input>
     </form>
   );
 }

@@ -6,7 +6,9 @@ export default function SearchResults({
   searchResults,
   searchType,
   user,
-  setUser
+  setUser,
+  setCurrentPage,
+  setCurrentProject
 }) {
   let resultType = searchResults?.users
     ? 'users'
@@ -26,13 +28,21 @@ export default function SearchResults({
               otherUser={searchResultUser}
               user={user}
               setUser={setUser}
+              setCurrentProject={setCurrentProject}
+              setCurrentPage={setCurrentPage}
             />
           );
         });
       case 'projects':
         return searchResults.projects.map(project => {
           return (
-            <ProjectPreview project={project} user={user} setUser={setUser} />
+            <ProjectPreview
+              project={project}
+              user={user}
+              setUser={setUser}
+              setCurrentPage={setCurrentPage}
+              setCurrentProject={setCurrentProject}
+            />
           );
         });
       default:
@@ -40,5 +50,5 @@ export default function SearchResults({
     }
   };
 
-  return <div>{showSearchResults()}</div>;
+  return <div className='SearchResults'>{showSearchResults()}</div>;
 }

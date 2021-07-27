@@ -67,3 +67,7 @@
 .AddImageForm > .input-container {
   margin: 5px;
 }
+
+.no-images {
+  margin: auto;
+}

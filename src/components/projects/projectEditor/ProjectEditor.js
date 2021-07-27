@@ -30,6 +30,7 @@ export default function ProjectEditor({
   const [id, setId] = useState(project?.id || null);
 
   const buildNewProject = () => {
+    console.log('building', id);
     const newProject = {
       title,
       description,
@@ -39,9 +40,6 @@ export default function ProjectEditor({
       author_id: user.id,
       id: id
     };
-    if (id) {
-      newProject.id = id;
-    }
     return newProject;
   };
 
@@ -50,6 +48,7 @@ export default function ProjectEditor({
     return await fetchPatchProject(buildNewProject()).then(
       ({ user, project }) => {
         setUser(user);
+
         setCurrentProject(project);
       }
     );
@@ -90,9 +89,10 @@ export default function ProjectEditor({
 
   useEffect(() => {
     if (!project) {
-      fetchPostProject({ author_id: user.id }).then(({ project }) =>
-        setCurrentProject(project)
-      );
+      fetchPostProject({ author_id: user.id }).then(({ project }) => {
+        setCurrentProject(project);
+        setId(project.id);
+      });
     }
   }, []);
 

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../css/UserPreview.css';
+
 import ToggleFollowButton from './ToggleFollowButton';
 
 export default function UserPreview({ user, otherUser, setUser }) {

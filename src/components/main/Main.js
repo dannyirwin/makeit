@@ -31,6 +31,7 @@ export default function Main({ user, setUser }) {
             currentProject={currentProject}
             user={user}
             setCurrentProject={setCurrentProject}
+            setUser={setUser}
           />
         );
       case 'Feed':
@@ -43,7 +44,14 @@ export default function Main({ user, setUser }) {
           />
         );
       case 'Explore':
-        return <Explore user={user} setUser={setUser} />;
+        return (
+          <Explore
+            user={user}
+            setUser={setUser}
+            setCurrentPage={setCurrentPage}
+            setCurrentProject={setCurrentProject}
+          />
+        );
       case 'MyProfile':
       default:
         return (

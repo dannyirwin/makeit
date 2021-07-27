@@ -1,11 +1,20 @@
 import React from 'react';
 import SavedProjectsContainer from './SavedProjectsContainer';
 
-export default function SavedProjects({ user, setUser }) {
+export default function SavedProjects({
+  user,
+  setUser,
+  setCurrentPage,
+  setCurrentProject
+}) {
   return (
     <div className='SavedProjects'>
-      <div>Search</div>
-      <SavedProjectsContainer user={user} setUser={setUser} />
+      <SavedProjectsContainer
+        user={user}
+        setUser={setUser}
+        setCurrentPage={setCurrentPage}
+        setCurrentProject={setCurrentProject}
+      />
     </div>
   );
 }

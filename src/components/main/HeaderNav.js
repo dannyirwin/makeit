@@ -6,7 +6,7 @@ export default function HeaderNav({
   setCurrentPage,
   setCurrentProject
 }) {
-  const pagesArr = ['Feed', 'MyProfile', 'Explore'];
+  const pagesArr = ['MyProfile', 'Explore']; //Feed
 
   const showNavButtons = () => {
     return pagesArr.map((pageString, index) => {

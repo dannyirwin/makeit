@@ -1,0 +1,68 @@
+.ProjectPreview {
+  width: 200px;
+  height: 300px;
+  font-size: 10px;
+  margin: 10px;
+}
+
+.ProjectPreview > .preview-project-info {
+  position: absolute;
+  margin: 0px;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.ProjectPreview > img {
+  max-width: 100%;
+  height: 300px;
+  background: black;
+  object-fit: cover;
+}
+
+.preview-project-head {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.preview-project-head > p {
+  margin: 5px;
+  font-size: 12px;
+  color: white;
+  text-align: right;
+}
+
+.preview-project-head > h3 {
+  margin: 5px;
+  font-size: 16px;
+  text-align: left;
+  color: white;
+}
+
+.preview-project-controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.preview-project-description {
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  margin: 0;
+  height: 100%;
+  transition: 0.3s;
+}
+
+.preview-project-description:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  opacity: 1;
+  cursor: default;
+}
+
+.preview-project-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.preview-project-controls > button {
+  margin: 0;
+}

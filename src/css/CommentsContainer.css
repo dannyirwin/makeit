@@ -1,0 +1,40 @@
+.CommentsContainer {
+  width: 70ch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 20vh;
+}
+
+.comment-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: grey;
+  font-size: 10px;
+}
+
+.Comment {
+  width: 100%;
+  font-size: 12px;
+}
+
+.CommentForm {
+  display: flex;
+  margin: 2em 0;
+}
+
+.CommentForm > input[type='text'] {
+  width: 70ch;
+}
+
+.CommentsContainer > button {
+  border: none;
+}
+
+.comments-display {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 5px;
+}

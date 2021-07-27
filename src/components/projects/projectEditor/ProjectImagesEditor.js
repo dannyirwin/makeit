@@ -34,9 +34,9 @@ export default function ProjectImagesEditor({
       });
     } else {
       return (
-        <div>
+        <div className='no-images'>
           <p>Add images to your project.</p>
-          <p>The first image will be used as the preview image.</p>;
+          <p>The first image will be used as the preview image.</p>
         </div>
       );
     }

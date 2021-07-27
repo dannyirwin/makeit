@@ -14,7 +14,7 @@ export default function LoginForm({
           onChange={e => setUsername(e.target.value)}
           type='text'
           name='username'
-          placeholder='DoodleBeader'
+          placeholder='username'
           required
         ></input>
       </div>
@@ -22,7 +22,7 @@ export default function LoginForm({
         <label htmlFor='password'>Password:</label>
         <input
           onChange={e => setPassword(e.target.value)}
-          type='text'
+          type='password'
           name='password'
           required
         ></input>

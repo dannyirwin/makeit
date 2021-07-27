@@ -4,7 +4,12 @@ import SearchResults from './SearchResults';
 
 import '../../css/Explore.css';
 
-export default function Explore({ user, setUser }) {
+export default function Explore({
+  user,
+  setUser,
+  setCurrentProject,
+  setCurrentPage
+}) {
   const [searchResults, setSearchResults] = useState([]);
   return (
     <div className='Explore'>
@@ -13,6 +18,8 @@ export default function Explore({ user, setUser }) {
         searchResults={searchResults}
         user={user}
         setUser={setUser}
+        setCurrentProject={setCurrentProject}
+        setCurrentPage={setCurrentPage}
       />
     </div>
   );

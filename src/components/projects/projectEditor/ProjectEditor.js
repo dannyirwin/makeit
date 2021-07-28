@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 
 import {
   fetchPostProject,
-  fetchPatchProject,
-  fetchGetProject
+  fetchPatchProject
 } from '../../../utilities/fetchUtilities';
 
 import '../../../css/ProjectEditor.css';
@@ -17,11 +16,8 @@ export default function ProjectEditor({
   setCurrentProject,
   setUser
 }) {
-  const [title, setTitle] = useState(project?.title || '');
+  const [title, setTitle] = useState(project?.title || 'New Project');
   const [description, setDescription] = useState(project?.description || '');
-  const [previewImage, setPreviewImage] = useState(
-    project?.preview_image_url || ''
-  );
   const [images, setImages] = useState(project ? project.images : []);
   const [content, setContent] = useState(project?.content || '');
   const [isPublished, setIsPublished] = useState(
@@ -30,11 +26,9 @@ export default function ProjectEditor({
   const [id, setId] = useState(project?.id || null);
 
   const buildNewProject = () => {
-    console.log('building', id);
     const newProject = {
       title,
       description,
-      preview_image_url: previewImage,
       content,
       is_published: isPublished,
       author_id: user.id,

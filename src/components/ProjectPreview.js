@@ -29,12 +29,13 @@ export default function ProjectPreview({
           <p>By: {project.author.username}</p>
         </div>
 
-        <p className='preview-project-description'>{project.description}</p>
+        <p className='preview-project-description' onClick={handleViewProject}>
+          {project.description}
+        </p>
       </div>
 
       {showImage()}
       <div className='preview-project-controls'>
-        <button onClick={handleViewProject}>View</button>
         <ToggleBookmarkProjectButton
           project={project}
           user={user}

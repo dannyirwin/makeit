@@ -6,7 +6,12 @@ export default function MyMakers({ user, setUser }) {
   const showMyMakers = () => {
     return user.following.map(otherUser => {
       return (
-        <UserPreview user={user} setUser={setUser} otherUser={otherUser} />
+        <UserPreview
+          key={user.id}
+          user={user}
+          setUser={setUser}
+          otherUser={otherUser}
+        />
       );
     });
   };

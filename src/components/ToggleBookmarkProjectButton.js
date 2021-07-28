@@ -18,7 +18,9 @@ export default function ToggleBookmarkProjectButton({
   };
   const myFollowingIds = user.followed_projects.map(project => project.id);
 
-  return myFollowingIds.includes(project.id) ? (
+  return user.id === project.author_id ? null : myFollowingIds.includes(
+      project.id
+    ) ? (
     <button onClick={handleUnfollowUser}>Remove Bookmark</button>
   ) : (
     <button onClick={handleFollowUser}>Bookmark</button>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import CommentsContainer from './CommentsContainer';
 
@@ -13,26 +13,28 @@ export default function ViewProject({
   setCurrentProject,
   setUser
 }) {
-  const [project, setProject] = useState(currentProject);
-
   useEffect(() => {
     fetchGetProject(currentProject.id).then(setCurrentProject);
   }, []);
 
   return (
-    project && (
-      <div className='ViewProject'>
-        {project?.images?.length > 0 ? (
+    currentProject && (
+      <div className='ViewcurrentProject'>
+        {currentProject?.images?.length > 0 ? (
           <img
-            src={project?.images[0].image_url}
-            alt={`project by ${project?.author?.username}`}
+            src={currentProject?.images[0].image_url}
+            alt={`project by ${currentProject?.author?.username}`}
           ></img>
         ) : null}
         <div className='article-container'>
           {currentProject?.images?.length > 1 && (
             <ViewProjectImages images={currentProject?.images} />
           )}
-          <ViewProjectContent project={project} setUser={setUser} user={user} />
+          <ViewProjectContent
+            project={currentProject}
+            setUser={setUser}
+            user={user}
+          />
         </div>
         <CommentsContainer
           project={currentProject}

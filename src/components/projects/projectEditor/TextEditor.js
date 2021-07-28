@@ -8,8 +8,6 @@ import {
   convertFromHTML
 } from 'draft-js';
 import Editor from '@draft-js-plugins/editor';
-import createAlignmentPlugin from '@draft-js-plugins/alignment';
-import createFocusPlugin from '@draft-js-plugins/focus';
 import draftToHtml from 'draftjs-to-html';
 import BlockStyleControls from './BlockStyleControls';
 import InlineStyleControls from './InlineStyleControls';

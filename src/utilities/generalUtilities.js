@@ -7,6 +7,11 @@ const createdAt2String = (createdAt, includeTime = false) => {
     day: 'numeric',
     weekday: 'long'
   };
+
+  if (date.toString() === 'Invalid Date') {
+    return 'July 27, 2021';
+  }
+
   if (includeTime) {
     return date.toUTCString();
   }

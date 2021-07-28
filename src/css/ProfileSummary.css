@@ -1,0 +1,53 @@
+.ProfileSummary {
+  text-align: left;
+  position: relative;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-info > img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.text-container > h1 {
+  padding: 0 1em;
+}
+
+.text-container > p {
+  padding: 0 1em;
+  text-indent: 1em;
+}
+
+.user-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.EditUserForm > .input-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+}
+
+.EditUserForm:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.EditUserForm > button {
+  width: 10em;
+  margin: 5px auto;
+}
+
+.edit-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

@@ -8,7 +8,6 @@ export default function SavedProjectsContainer({
   setCurrentProject
 }) {
   const showProjects = () => {
-    console.log(user);
     return user.followed_projects.map(project => {
       return (
         <ProjectPreview

@@ -21,10 +21,7 @@ export default function ProjectImagesEditor({
   };
 
   const addImage = image => {
-    console.log(image);
-    fetchPostImage(image)
-      .then(image => setImages([...images, image]))
-      .then(_ => console.log(images));
+    fetchPostImage(image).then(image => setImages([...images, image]));
   };
 
   const showImages = () => {

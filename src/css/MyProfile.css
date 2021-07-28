@@ -9,9 +9,35 @@
   width: 70ch;
 }
 
+.MyProfileNav > button {
+  margin: 10px;
+  border: var(--quaternary-color) solid 2px;
+  color: var(--quaternary-color);
+  text-decoration: bold;
+  font-size: 16px;
+}
+
+.MyProfileNav > button:hover {
+  margin: 10px;
+  background-color: var(--quaternary-color);
+  border: var(--white-color) solid 2px;
+  color: var(--white-color);
+  text-decoration: bold;
+  font-size: 16px;
+}
+
+.nav-btn {
+  margin: 0;
+  padding: 0.5em;
+}
+
 .nav-btn.selected {
   background: var(--primary-color);
   color: var(--white-color);
+}
+
+.nav-btn:hover {
+  color: grey;
 }
 
 .SavedProjectsContainer {

@@ -4,6 +4,9 @@ import {
   fetchGetProject
 } from '../../utilities/fetchUtilities';
 
+import '../../css/MyProjects.css';
+import PublishedStatusIcon from './PublishedStatusIcon';
+
 export default function MyProjectDisplay({
   project,
   setUser,
@@ -32,11 +35,15 @@ export default function MyProjectDisplay({
   };
 
   return (
-    <div>
-      <p>{project.title + '-' + project.id + ' ' + project.is_published}</p>
+    <div className='MyProjectsDisplay'>
+      <PublishedStatusIcon publishedStatus={project.is_published} />
+      <h3>{project.title}</h3>
+      {project?.images.length > 0 && (
+        <img src={project.images[0].image_url} alt='project preview'></img>
+      )}
       <button onClick={handleView}>View</button>
       <button onClick={handleEdit}>Edit</button>
-      <button onClick={() => deleteProject(id)}>X</button>
+      <button onClick={() => deleteProject(id)}>Delete</button>
     </div>
   );
 }

@@ -1,0 +1,82 @@
+.UserPreview {
+  margin: 1em;
+  width: 250px;
+  box-shadow: 5px 5px 12px 5px lightgrey;
+}
+
+.user-image-container {
+}
+
+.user-image-container > img {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: 10px solid var(--white-color);
+  margin: 1em;
+}
+
+.UserPreview > h3 {
+  padding: 5px;
+  margin: auto 1em;
+}
+
+.UserPreview > button {
+  margin: 0;
+  width: 100%;
+  margin-top: auto;
+  border: none;
+  border-top: 1px solid grey;
+  color: grey;
+}
+.UserPreview > button:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.UserPreview > p {
+  font-size: 12px;
+  overflow-y: auto;
+  height: 100%;
+  max-height: 72px;
+}
+
+.UserPreview > .user-stats {
+  font-size: 12px;
+}
+
+.UserPreview:nth-of-type(1n) > .user-image-container {
+  background-color: var(--tertiary-color);
+}
+
+.UserPreview:nth-of-type(1n) > h3 {
+  color: var(--tertiary-color);
+  border-bottom: var(--tertiary-color) solid 2px;
+}
+
+.UserPreview:nth-of-type(2n) > .user-image-container {
+  background-color: var(--quaternary-color);
+}
+
+.UserPreview:nth-of-type(2n) > h3 {
+  color: var(--quaternary-color);
+  border-bottom: var(--quaternary-color) solid 2px;
+}
+
+.UserPreview:nth-of-type(3n) > .user-image-container {
+  background-color: var(--primary-color);
+}
+
+.UserPreview:nth-of-type(3n) > h3 {
+  color: var(--primary-color);
+  border-bottom: var(--primary-color) solid 2px;
+}
+
+.UserPreview:nth-of-type(4n) > .user-image-container {
+  background-color: var(--secondary-color);
+}
+
+.UserPreview:nth-of-type(4n) > h3 {
+  color: var(--secondary-color);
+  border-bottom: var(--secondary-color) solid 2px;
+}

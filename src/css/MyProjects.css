@@ -1,0 +1,43 @@
+.MyProjectsDisplay {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: 5px 1em;
+  padding: 5px 10px;
+  border-bottom: 2px solid var(--quaternary-color);
+}
+
+.MyProjectsDisplay > img {
+  height: 72px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.MyProjectsDisplay > h3 {
+  margin: auto;
+  margin-left: 1em;
+}
+
+.MyProjectsDisplay > button {
+  margin: auto 5px;
+  width: 72px;
+}
+
+.MyProjectsDisplay > button:last-of-type:hover {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.PublishedStatusIcon {
+  font-size: 12px;
+  background: var(--tertiary-color);
+  color: white;
+  padding: 3px;
+  position: absolute;
+  top: 0;
+  font-weight: 600;
+}
+
+.unpublished {
+  background: var(--secondary-color);
+}

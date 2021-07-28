@@ -3,6 +3,8 @@
   height: 300px;
   font-size: 10px;
   margin: 10px;
+  box-shadow: 5px 5px 12px 5px lightgrey;
+  position: relative;
 }
 
 .ProjectPreview > .preview-project-info {
@@ -22,6 +24,7 @@
 
 .preview-project-head {
   background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--tertiary-color);
 }
 
 .preview-project-head > p {
@@ -49,13 +52,13 @@
   margin: 0;
   height: 100%;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .preview-project-description:hover {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   opacity: 1;
-  cursor: default;
 }
 
 .preview-project-controls {
@@ -65,4 +68,14 @@
 }
 .preview-project-controls > button {
   margin: 0;
+  width: 100%;
+  padding: 2px;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.preview-project-controls > button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }

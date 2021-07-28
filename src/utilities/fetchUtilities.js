@@ -78,7 +78,6 @@ const fetchPostProject = async project => {
 
 const fetchPatchProject = async project => {
   const body = { project: project };
-  console.log('---Patching', project.id);
   const response = await fetch(
     projectsUrl + project.id,
     fetchOptions(body, 'PATCH')
@@ -174,7 +173,6 @@ const fetchPostImage = async image => {
   const response = await fetch(imagesUrl, fetchOptions(body)).then(response =>
     response.json()
   );
-  console.log(response);
   return response;
 };
 const fetchDeleteImage = async commentId => {
@@ -183,6 +181,15 @@ const fetchDeleteImage = async commentId => {
     fetchOptions(null, 'DELETE')
   );
   return response.json();
+};
+
+const fetchPatchUser = async (data, userId) => {
+  const response = await fetch(
+    usersUrl + userId,
+    fetchOptions(data, 'PATCH')
+  ).then(response => response.json());
+  console.log(response);
+  return response;
 };
 
 export {
@@ -200,5 +207,6 @@ export {
   fetchDeleteComment,
   fetchGetProject,
   fetchPostImage,
-  fetchDeleteImage
+  fetchDeleteImage,
+  fetchPatchUser
 };

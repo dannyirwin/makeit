@@ -18,4 +18,8 @@ const createdAt2String = (createdAt, includeTime = false) => {
   return date.toLocaleDateString('default', options);
 };
 
-export { createdAt2String };
+const buildReduxAction = (type, payload) => {
+  return { type, payload };
+};
+
+export { createdAt2String, buildReduxAction };

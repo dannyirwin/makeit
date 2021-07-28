@@ -1,8 +1,13 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { buildReduxAction } from '../../utilities/generalUtilities';
 
-export default function UserIcon({ user, setUser }) {
+export default function UserIcon() {
+  const user = useSelector(store => store.user);
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    setUser();
+    dispatch(buildReduxAction('SET_USER', null));
     window.localStorage.clear();
   };
   return (

@@ -1,25 +1,28 @@
 import React, { useEffect } from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchGetProject } from '../../utilities/fetchUtilities';
+import { buildReduxAction } from '../../utilities/generalUtilities';
+
+import ViewProjectImages from './ViewProjectImages';
+import ViewProjectContent from './ViewProjectContent';
 import CommentsContainer from './CommentsContainer';
 
 import '../../css/ViewProject.css';
-import { fetchGetProject } from '../../utilities/fetchUtilities';
-import ViewProjectImages from './ViewProjectImages';
-import ViewProjectContent from './ViewProjectContent';
 
-export default function ViewProject({
-  currentProject,
-  user,
-  setCurrentProject,
-  setUser
-}) {
+export default function ViewProject() {
+  const dispatch = useDispatch();
+  const currentProject = useSelector(store => store.currentProject);
+
   useEffect(() => {
-    fetchGetProject(currentProject.id).then(setCurrentProject);
+    fetchGetProject(currentProject.id).then(project =>
+      dispatch(buildReduxAction('SET_CURRENT_PROJECT', project))
+    );
   }, []);
 
   return (
     currentProject && (
-      <div className='ViewcurrentProject'>
+      <div className='ViewProject'>
         {currentProject?.images?.length > 0 ? (
           <img
             src={currentProject?.images[0].image_url}
@@ -30,17 +33,9 @@ export default function ViewProject({
           {currentProject?.images?.length > 1 && (
             <ViewProjectImages images={currentProject?.images} />
           )}
-          <ViewProjectContent
-            project={currentProject}
-            setUser={setUser}
-            user={user}
-          />
+          <ViewProjectContent project={currentProject} />
         </div>
-        <CommentsContainer
-          project={currentProject}
-          user={user}
-          setProject={setCurrentProject}
-        />
+        <CommentsContainer project={currentProject} />
       </div>
     )
   );

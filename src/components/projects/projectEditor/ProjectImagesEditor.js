@@ -8,12 +8,7 @@ import ImageEditorPreview from './ImageEditorPreview';
 
 import '../../../css/ProjectImagesEditor.css';
 
-export default function ProjectImagesEditor({
-  images,
-  projectId,
-  setImages,
-  setCurrentProject
-}) {
+export default function ProjectImagesEditor({ images, projectId, setImages }) {
   const removeImage = imageId => {
     const newImages = [...images].filter(oldImage => oldImage.id !== imageId);
     setImages(newImages);

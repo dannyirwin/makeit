@@ -1,10 +1,14 @@
 import React from 'react';
 import ProjectPreview from '../ProjectPreview';
 
-export default function Projects({ user, setUser }) {
+import { useSelector } from 'react-redux';
+
+export default function Projects() {
+  const user = useSelector(store => store.user);
+
   const showProjects = () => {
     return user.followed_projects.map(project => {
-      return <ProjectPreview project={project} user={user} setUser={setUser} />;
+      return <ProjectPreview project={project} />;
     });
   };
   return <div>{showProjects()}</div>;

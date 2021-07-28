@@ -1,20 +1,17 @@
-import { createStore } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
 
-const defaultStore = {
-  user: null,
-  currentPage: '',
-  currentProject: null,
-  viewUser: null
-};
+import user from './reducers/user';
+import currentProject from './reducers/currentProject';
+import currentPage from './reducers/currentPage';
+import viewUser from './reducers/viewUser';
 
-function userReducer(store, action) {
-  switch (action.type) {
-    case 'SET_USER':
-      return { ...store, user: action.payload };
+const reducer = combineReducers({
+  user,
+  currentProject,
+  currentPage,
+  viewUser
+});
 
-    default:
-      return store;
-  }
-}
+const store = createStore(reducer);
 
-export const store = createStore(userReducer, defaultStore);
+export { store };

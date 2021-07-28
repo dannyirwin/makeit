@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { buildReduxAction } from '../../utilities/generalUtilities';
 import { fetchPatchUser } from '../../utilities/fetchUtilities';
 
-export default function EditUserForm({ user, setUser, setEditMode }) {
+export default function EditUserForm({ setEditMode }) {
+  const user = useSelector(store => store.user);
   const [aboutMe, setAboutMe] = useState(user.about_me);
   const [imageUrl, setImageUrl] = useState(user.image_url);
+
+  const dispatch = useDispatch();
 
   const handleSave = () => {
     const userData = {
       about_me: aboutMe,
       image_url: imageUrl
     };
-    fetchPatchUser(userData, user.id).then(data => setUser(data.user));
+    fetchPatchUser(userData, user.id).then(({ user }) =>
+      dispatch(buildReduxAction('SET_USER', user))
+    );
     setEditMode(false);
   };
   return (

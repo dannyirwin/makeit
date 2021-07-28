@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import EditUserForm from './EditUserForm';
 
 import { createdAt2String } from '../../utilities/generalUtilities';
 
 import '../../css/ProfileSummary.css';
 
-export default function AboutMe({ user, setUser }) {
+export default function ProfileSummery() {
+  const user = useSelector(store => store.user);
   const [editMode, setEditMode] = useState(false);
 
   const publishedProjects = user.myProjects.filter(
@@ -34,6 +37,6 @@ export default function AboutMe({ user, setUser }) {
       </button>
     </div>
   ) : (
-    <EditUserForm user={user} setUser={setUser} setEditMode={setEditMode} />
+    <EditUserForm setEditMode={setEditMode} />
   );
 }

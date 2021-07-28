@@ -1,10 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { buildReduxAction } from '../../utilities/generalUtilities';
 
-export default function MyProfileNav({
-  setCurrentPage,
-  currentContent,
-  setCurrentContent
-}) {
+export default function MyProfileNav({ currentContent, setCurrentContent }) {
+  const dispatch = useDispatch();
+
   const classNames = buttonValue => {
     let classNames = 'nav-btn';
     if (buttonValue === currentContent) {
@@ -15,7 +15,11 @@ export default function MyProfileNav({
 
   return (
     <div className='MyProfileNav'>
-      <button onClick={() => setCurrentPage('ProjectEditor')}>
+      <button
+        onClick={() =>
+          dispatch(buildReduxAction('SET_CURRENT_PAGE', 'ProjectEditor'))
+        }
+      >
         + Create New Project
       </button>
       <nav>

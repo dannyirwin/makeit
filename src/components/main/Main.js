@@ -1,79 +1,37 @@
-import React, { useState } from 'react';
-import '../../css/Main.css';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import MyProfile from '../myProfile/MyProfile';
 import Explore from '../explore/Explore';
-import Feed from '../feed/Feed';
 import ProjectEditor from '../projects/projectEditor/ProjectEditor';
 import Header from './Header';
 import ViewProject from '../projects/ViewProject';
+import ViewUser from '../makers/ViewUser';
 
-export default function Main({ user, setUser }) {
-  const [currentPage, setCurrentPage] = useState('MyProfile');
-  const [currentProject, setCurrentProject] = useState();
+import '../../css/Main.css';
+
+export default function Main() {
+  const currentPage = useSelector(store => store.currentPage);
 
   const showCurrentPage = () => {
     switch (currentPage) {
       case 'ProjectEditor':
-        return (
-          <ProjectEditor
-            user={user}
-            project={currentProject}
-            setCurrentPage={setCurrentPage}
-            setCurrentProject={setCurrentProject}
-            setUser={setUser}
-          />
-        );
-
+        return <ProjectEditor />;
       case 'ViewProject':
-        return (
-          <ViewProject
-            currentProject={currentProject}
-            user={user}
-            setCurrentProject={setCurrentProject}
-            setUser={setUser}
-          />
-        );
-      case 'Feed':
-        return (
-          <Feed
-            user={user}
-            setUser={setUser}
-            setCurrentPage={setCurrentPage}
-            setCurrentProject={setCurrentProject}
-          />
-        );
+        return <ViewProject />;
       case 'Explore':
-        return (
-          <Explore
-            user={user}
-            setUser={setUser}
-            setCurrentPage={setCurrentPage}
-            setCurrentProject={setCurrentProject}
-          />
-        );
+        return <Explore />;
+      case 'ViewUser':
+        return <ViewUser />;
       case 'MyProfile':
       default:
-        return (
-          <MyProfile
-            user={user}
-            setUser={setUser}
-            setCurrentPage={setCurrentPage}
-            setCurrentProject={setCurrentProject}
-          />
-        );
+        return <MyProfile />;
     }
   };
 
   return (
     <div className='Main'>
-      <Header
-        user={user}
-        setUser={setUser}
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-        setCurrentProject={setCurrentProject}
-      />
+      <Header />
       <div className='main-page-container'>{showCurrentPage()}</div>
     </div>
   );

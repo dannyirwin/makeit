@@ -1,11 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { buildReduxAction } from '../../utilities/generalUtilities';
 
-export default function NavBtn({
-  pageString,
-  currentPage,
-  setCurrentPage,
-  setCurrentProject
-}) {
+export default function NavBtn({ pageString }) {
+  const currentPage = useSelector(store => store.currentPage);
+  const dispatch = useDispatch();
+
   const classNames = () => {
     let classNames = '';
     if (pageString === currentPage) {
@@ -17,8 +17,8 @@ export default function NavBtn({
     <button
       className={classNames()}
       onClick={() => {
-        setCurrentPage(pageString);
-        setCurrentProject();
+        dispatch(buildReduxAction('SET_CURRENT_PAGE', pageString));
+        dispatch(buildReduxAction('SET_CURRENT_PROJECT', null));
       }}
     >
       {pageString}

@@ -4,27 +4,15 @@ import MyProfileNav from './MyProfileNav';
 
 import '../../css/MyProfile.css';
 
-export default function MyProfile({
-  user,
-  setCurrentPage,
-  setUser,
-  setCurrentProject
-}) {
+export default function MyProfile() {
   const [currentContent, setCurrentContent] = useState('ProfileSummary');
   return (
     <div className='MyProfile'>
       <MyProfileNav
-        setCurrentPage={setCurrentPage}
         currentContent={currentContent}
         setCurrentContent={setCurrentContent}
       />
-      <MyProfileContent
-        currentContent={currentContent}
-        user={user}
-        setUser={setUser}
-        setCurrentProject={setCurrentProject}
-        setCurrentPage={setCurrentPage}
-      />
+      <MyProfileContent currentContent={currentContent} />
     </div>
   );
 }

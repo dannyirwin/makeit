@@ -4,23 +4,12 @@ import SearchResults from './SearchResults';
 
 import '../../css/Explore.css';
 
-export default function Explore({
-  user,
-  setUser,
-  setCurrentProject,
-  setCurrentPage
-}) {
+export default function Explore() {
   const [searchResults, setSearchResults] = useState([]);
   return (
     <div className='Explore'>
       <ExploreSearch setSearchResults={setSearchResults} />
-      <SearchResults
-        searchResults={searchResults}
-        user={user}
-        setUser={setUser}
-        setCurrentProject={setCurrentProject}
-        setCurrentPage={setCurrentPage}
-      />
+      <SearchResults searchResults={searchResults} />
     </div>
   );
 }

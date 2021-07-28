@@ -1,23 +1,14 @@
 import React from 'react';
 import ProjectPreview from '../ProjectPreview';
 
-export default function SavedProjectsContainer({
-  user,
-  setUser,
-  setCurrentPage,
-  setCurrentProject
-}) {
+import { useSelector } from 'react-redux';
+
+export default function SavedProjectsContainer() {
+  const user = useSelector(store => store.user);
+
   const showProjects = () => {
     return user.followed_projects.map(project => {
-      return (
-        <ProjectPreview
-          project={project}
-          user={user}
-          setUser={setUser}
-          setCurrentPage={setCurrentPage}
-          setCurrentProject={setCurrentProject}
-        />
-      );
+      return <ProjectPreview key={project.id} project={project} />;
     });
   };
   return user.followed_projects.length > 0 ? (

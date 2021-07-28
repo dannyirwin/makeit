@@ -3,7 +3,7 @@ import React from 'react';
 import { createdAt2String } from '../../utilities/generalUtilities';
 import ToggleBookmarkProjectButton from '../ToggleBookmarkProjectButton';
 
-export default function ViewProjectContent({ project, user, setUser }) {
+export default function ViewProjectContent({ project }) {
   return (
     <article className='ProjectContent'>
       <h3>{project?.title}</h3>
@@ -14,11 +14,7 @@ export default function ViewProjectContent({ project, user, setUser }) {
         )}
         <p>By: {project?.author.username}</p>
         <p className='publish-date'>{createdAt2String(project?.created_at)}</p>
-        <ToggleBookmarkProjectButton
-          project={project}
-          setUser={setUser}
-          user={user}
-        />
+        <ToggleBookmarkProjectButton project={project} />
       </div>
 
       <div

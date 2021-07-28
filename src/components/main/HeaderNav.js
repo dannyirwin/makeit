@@ -1,24 +1,12 @@
 import React from 'react';
 import NavBtn from './NavBtn';
 
-export default function HeaderNav({
-  currentPage,
-  setCurrentPage,
-  setCurrentProject
-}) {
+export default function HeaderNav() {
   const pagesArr = ['MyProfile', 'Explore']; //Feed
 
   const showNavButtons = () => {
     return pagesArr.map((pageString, index) => {
-      return (
-        <NavBtn
-          key={index}
-          currentPage={currentPage}
-          pageString={pageString}
-          setCurrentPage={setCurrentPage}
-          setCurrentProject={setCurrentProject}
-        />
-      );
+      return <NavBtn key={index} pageString={pageString} />;
     });
   };
 

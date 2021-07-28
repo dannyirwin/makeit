@@ -1,36 +1,35 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { buildReduxAction } from '../../utilities/generalUtilities';
 import {
   fetchDeleteProject,
   fetchGetProject
 } from '../../utilities/fetchUtilities';
 
-import '../../css/MyProjects.css';
 import PublishedStatusIcon from './PublishedStatusIcon';
 
-export default function MyProjectDisplay({
-  project,
-  setUser,
-  setCurrentProject,
-  setCurrentPage
-}) {
+import '../../css/MyProjects.css';
+export default function MyProjectDisplay({ project }) {
   const { id } = project;
-  //const authorName = author.username;
+  const dispatch = useDispatch();
 
   const deleteProject = projectId => {
-    fetchDeleteProject(projectId).then(({ user }) => setUser(user));
+    fetchDeleteProject(projectId).then(({ user }) =>
+      dispatch(buildReduxAction('SET_USER', user))
+    );
   };
 
   const handleEdit = () => {
     fetchGetProject(project.id).then(response => {
-      setCurrentProject(response);
-      setCurrentPage('ProjectEditor');
+      dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
+      dispatch(buildReduxAction('SET_CURRENT_PAGE', 'ProjectEditor'));
     });
   };
 
   const handleView = () => {
     fetchGetProject(project.id).then(response => {
-      setCurrentProject(response);
-      setCurrentPage('ViewProject');
+      dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
+      dispatch(buildReduxAction('SET_CURRENT_PAGE', 'ViewProject'));
     });
   };
 

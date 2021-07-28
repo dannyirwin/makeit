@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { buildReduxAction } from '../../../utilities/generalUtilities';
 
 import {
   fetchPostProject,
@@ -9,13 +11,11 @@ import '../../../css/ProjectEditor.css';
 import TextEditor from './TextEditor';
 import ProjectImagesEditor from './ProjectImagesEditor';
 
-export default function ProjectEditor({
-  user,
-  project,
-  setCurrentPage,
-  setCurrentProject,
-  setUser
-}) {
+export default function ProjectEditor() {
+  const dispatch = useDispatch();
+  const user = useSelector(store => store.user);
+  const project = useSelector(store => store.currentProject);
+
   const [title, setTitle] = useState(project?.title || 'New Project');
   const [description, setDescription] = useState(project?.description || '');
   const [images, setImages] = useState(project ? project.images : []);
@@ -41,9 +41,8 @@ export default function ProjectEditor({
     e && e.preventDefault();
     return await fetchPatchProject(buildNewProject()).then(
       ({ user, project }) => {
-        setUser(user);
-
-        setCurrentProject(project);
+        dispatch(buildReduxAction('SET_USER', user));
+        dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
       }
     );
   };
@@ -51,15 +50,15 @@ export default function ProjectEditor({
   const handleSaveAndPublishProject = e => {
     e.preventDefault();
     handleSaveProject(e).then(_ => {
-      setCurrentProject();
-      setCurrentPage('MyProfile');
+      dispatch(buildReduxAction('SET_CURRENT_PROJECT', null));
+      dispatch(buildReduxAction('SET_CURRENT_PAGE', 'MyProfile'));
     });
   };
 
   const handleExit = e => {
     e.preventDefault();
-    setCurrentProject();
-    setCurrentPage('MyProfile');
+    dispatch(buildReduxAction('SET_CURRENT_PROJECT', null));
+    dispatch(buildReduxAction('SET_CURRENT_PAGE', 'MyProfile'));
   };
 
   const handlePublishButton = () => {
@@ -84,7 +83,7 @@ export default function ProjectEditor({
   useEffect(() => {
     if (!project) {
       fetchPostProject({ author_id: user.id }).then(({ project }) => {
-        setCurrentProject(project);
+        dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
         setId(project.id);
       });
     }
@@ -116,7 +115,6 @@ export default function ProjectEditor({
         <ProjectImagesEditor
           images={images}
           setImages={setImages}
-          setCurrentProject={setCurrentProject}
           projectId={id}
         />
         <p>Project Body:</p>

@@ -1,18 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { buildReduxAction } from '../utilities/generalUtilities';
+
 import ToggleBookmarkProjectButton from './ToggleBookmarkProjectButton';
 
 import '../css/ProjectPreview.css';
 
-export default function ProjectPreview({
-  project,
-  user,
-  setUser,
-  setCurrentPage,
-  setCurrentProject
-}) {
+export default function ProjectPreview({ project }) {
+  const dispatch = useDispatch();
+  dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
+
   const handleViewProject = () => {
-    setCurrentPage('ViewProject');
-    setCurrentProject(project);
+    dispatch(buildReduxAction('SET_CURRENT_PAGE', 'ViewProject'));
+    dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
   };
 
   const showImage = () => {
@@ -36,11 +36,7 @@ export default function ProjectPreview({
 
       {showImage()}
       <div className='preview-project-controls'>
-        <ToggleBookmarkProjectButton
-          project={project}
-          user={user}
-          setUser={setUser}
-        />
+        <ToggleBookmarkProjectButton project={project} />
       </div>
     </div>
   );

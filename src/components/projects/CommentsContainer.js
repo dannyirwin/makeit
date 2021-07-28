@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import '../../css/CommentsContainer.css';
 
 import CommentForm from './CommentForm';
 import Comment from './Comment';
 
-export default function CommentsContainer({ project, user, setProject }) {
+export default function CommentsContainer({ project, setProject }) {
+  const user = useSelector(store => store.user);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const showComments = () => {

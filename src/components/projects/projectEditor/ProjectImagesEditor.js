@@ -3,6 +3,8 @@ import {
   fetchDeleteImage,
   fetchPostImage
 } from '../../../utilities/fetchUtilities';
+import { storage } from '../../../firebase/firebase';
+
 import AddImageForm from './AddImageForm';
 import ImageEditorPreview from './ImageEditorPreview';
 

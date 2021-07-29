@@ -19,7 +19,7 @@ export default function MyProfileContent({ currentContent }) {
         return <MyMakers />;
       case 'ProfileSummary':
       default:
-        return <ProfileSummary />;
+        return <ProfileSummary user={user} isMainUser={true} />;
     }
   };
   return <div className='MyProfileContent'>{showCurrentContent()}</div>;

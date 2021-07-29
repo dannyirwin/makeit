@@ -5,6 +5,7 @@
   margin: 10px;
   box-shadow: 5px 5px 12px 5px lightgrey;
   position: relative;
+  z-index: 5;
 }
 
 .ProjectPreview > .preview-project-info {

@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { createdAt2String } from '../../utilities/generalUtilities';
 
 import EditUserForm from './EditUserForm';
 
-import { createdAt2String } from '../../utilities/generalUtilities';
-
 import '../../css/ProfileSummary.css';
 
-export default function ProfileSummery() {
-  const user = useSelector(store => store.user);
+export default function ProfileSummary({ user, isMainUser = false }) {
   const [editMode, setEditMode] = useState(false);
 
-  const publishedProjects = user.myProjects.filter(
+  const publishedProjects = user?.myProjects?.filter(
     project => project.is_published === true
   );
+  console.log(isMainUser);
 
   const dateString = createdAt2String(user.created_at);
 
@@ -27,14 +25,16 @@ export default function ProfileSummery() {
         </div>
       </div>
       <div className='user-stats'>
-        <p>Followers {user?.followers.length}</p>
-        <p>Following {user?.following.length} projects</p>
-        <p>{publishedProjects.length} published projects</p>
+        <p>Followers {user.follower_count}</p>
+        <p>Following {user.following_count} projects</p>
+        <p>{publishedProjects?.length || 0} published projects</p>
         <p>Joined {dateString}</p>
       </div>
-      <button className='edit-btn' onClick={() => setEditMode(true)}>
-        Edit Profile
-      </button>
+      {isMainUser && (
+        <button className='edit-btn' onClick={() => setEditMode(true)}>
+          Edit Profile
+        </button>
+      )}
     </div>
   ) : (
     <EditUserForm setEditMode={setEditMode} />

@@ -192,6 +192,14 @@ const fetchPatchUser = async (data, userId) => {
   return response;
 };
 
+const fetchGetUser = async userId => {
+  const response = await fetch(
+    usersUrl + userId,
+    fetchOptions(null, 'GET')
+  ).then(response => response.json());
+  return response;
+};
+
 export {
   fetchCreateUser,
   fetchLogin,
@@ -208,5 +216,6 @@ export {
   fetchGetProject,
   fetchPostImage,
   fetchDeleteImage,
-  fetchPatchUser
+  fetchPatchUser,
+  fetchGetUser
 };

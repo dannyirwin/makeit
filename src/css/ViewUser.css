@@ -2,6 +2,12 @@
   width: 90ch;
   margin: auto;
 }
+
+.ViewUser > .ProfileSummary > .ToggleFollowButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 .MakerProjectsContainer {
   display: flex;
   flex-direction: row;

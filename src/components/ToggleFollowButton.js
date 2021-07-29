@@ -25,8 +25,12 @@ export default function ToggleFollowButton({ otherUser }) {
   const myFollowingIds = user.following.map(user => user.id);
 
   return myFollowingIds.includes(otherUser.id) ? (
-    <button onClick={handleUnfollowUser}>Unfollow {otherUser.username}</button>
+    <button className='ToggleFollowButton' onClick={handleUnfollowUser}>
+      Unfollow {otherUser.username}
+    </button>
   ) : (
-    <button onClick={handleFollowUser}>Follow {otherUser.username}</button>
+    <button className='ToggleFollowButton' onClick={handleFollowUser}>
+      Follow {otherUser.username}
+    </button>
   );
 }

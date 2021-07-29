@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createdAt2String } from '../../utilities/generalUtilities';
 
 import EditUserForm from './EditUserForm';
+import ToggleFollowButton from '../ToggleFollowButton';
 
 import '../../css/ProfileSummary.css';
 
@@ -30,10 +31,12 @@ export default function ProfileSummary({ user, isMainUser = false }) {
         <p>{publishedProjects?.length || 0} published projects</p>
         <p>Joined {dateString}</p>
       </div>
-      {isMainUser && (
+      {isMainUser ? (
         <button className='edit-btn' onClick={() => setEditMode(true)}>
           Edit Profile
         </button>
+      ) : (
+        <ToggleFollowButton otherUser={user} />
       )}
     </div>
   ) : (

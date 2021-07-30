@@ -4,9 +4,9 @@
 }
 
 .TextEditor {
-  border: 1px solid grey;
+  border: 2px solid var(--primary-color);
   font-size: 14px;
-  padding: 5ch;
+  padding: 2em;
   margin: auto;
   max-width: 80ch;
   text-align: left;

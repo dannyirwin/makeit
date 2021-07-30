@@ -1,6 +1,8 @@
 .ProjectImagesEditor {
   max-width: 70ch;
   margin: 3em auto;
+  padding: 2em;
+  border: 2px solid var(--primary-color);
 }
 .image-preview-container {
   margin: auto;

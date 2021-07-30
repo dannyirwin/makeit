@@ -29,7 +29,6 @@ export default function AddImageForm({ addImage, projectId }) {
 
   const handleUpload = async e => {
     e.preventDefault();
-    console.log('upldoaing');
     const ref = storage.ref(`/images/${file.name}`);
     const uploadTask = ref.put(file);
     uploadTask.on('state_changed', console.log, console.error, () => {
@@ -42,7 +41,6 @@ export default function AddImageForm({ addImage, projectId }) {
           alt: formData.get('alt'),
           project_id: projectId
         };
-        console.log('uploaded', image);
         addImage(image);
         e.target.reset();
       });

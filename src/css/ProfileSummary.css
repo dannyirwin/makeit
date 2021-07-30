@@ -1,6 +1,9 @@
 .ProfileSummary {
   text-align: left;
   position: relative;
+  background: var(--tertiary-color);
+  box-shadow: -10px 10px var(--primary-color);
+  padding: 1em;
 }
 
 .main-info {
@@ -9,20 +12,24 @@
 }
 
 .main-info > img {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
-  border: var(--tertiary-color) solid 15px;
+  border: var(--white-color) solid 15px;
   object-fit: cover;
 }
 
 .text-container > h1 {
   padding: 0 1em;
+  color: var(--white-color);
 }
 
 .text-container > p {
-  padding: 0 1em;
+  padding: 1em;
+  margin: 1em;
   text-indent: 1em;
+  background: var(--white-color);
+  box-shadow: -10px 10px var(--primary-color);
 }
 
 .user-stats {
@@ -52,4 +59,7 @@
   position: absolute;
   right: 0;
   top: 0;
+  margin: 1em;
+  color: var(--white-color);
+  border: solid 1px var(--white-color);
 }

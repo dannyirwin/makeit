@@ -2,15 +2,18 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  margin: 5px 1em;
+  margin: 1em 0;
   padding: 5px 10px;
   border-bottom: 2px solid var(--quaternary-color);
+  box-shadow: -5px 5px 12px 5px rgba(0, 0, 0, 0.3);
 }
 
 .MyProjectsDisplay > img {
   height: 72px;
   width: 100px;
   object-fit: cover;
+  box-shadow: -5px 5px var(--primary-color);
+  margin: 10px 15px;
 }
 
 .MyProjectsDisplay > h3 {
@@ -33,6 +36,7 @@
   background: var(--tertiary-color);
   color: white;
   padding: 3px;
+  margin: 3px;
   position: absolute;
   top: 0;
   font-weight: 600;

@@ -7,13 +7,16 @@
   position: absolute;
   top: 0;
   right: 0;
+  margin: 1em;
+  color: var(--white-color);
+  border-color: var(--white-color);
 }
 .MakerProjectsContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   position: relative;
-  margin-top: 100px;
+  margin-top: 110px;
 }
 
 .no-projects-message {

@@ -24,6 +24,7 @@ export default function LoginForm({
           onChange={e => setPassword(e.target.value)}
           type='password'
           name='password'
+          placeholder='password'
           required
         ></input>
       </div>

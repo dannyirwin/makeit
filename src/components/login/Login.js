@@ -31,22 +31,30 @@ export default function Login({ setUser }) {
   };
   return (
     <div className='Login'>
-      {isNewUser ? (
-        <NewUserForm
-          setIsNewUser={setIsNewUser}
-          setUsername={setUsername}
-          setPassword={setPassword}
-          setAboutMe={setAboutMe}
-          handleSignUp={handleSignUp}
-        />
-      ) : (
-        <LoginForm
-          setIsNewUser={setIsNewUser}
-          setUsername={setUsername}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-        />
-      )}
+      <div className='login-container'>
+        <div className='login-inner-container'>
+          <h1 className='logo'>MakeIt</h1>
+          <div className='tagline'>
+            <p>Teach</p>•<p>Learn</p>•<p>Make</p>
+          </div>
+          {isNewUser ? (
+            <NewUserForm
+              setIsNewUser={setIsNewUser}
+              setUsername={setUsername}
+              setPassword={setPassword}
+              setAboutMe={setAboutMe}
+              handleSignUp={handleSignUp}
+            />
+          ) : (
+            <LoginForm
+              setIsNewUser={setIsNewUser}
+              setUsername={setUsername}
+              setPassword={setPassword}
+              handleLogin={handleLogin}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

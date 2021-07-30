@@ -9,6 +9,9 @@
   margin: auto;
   display: flex;
   flex-direction: row;
+  border: solid 10px var(--secondary-color);
+  box-shadow: -10px 10px var(--primary-color);
+  padding: 0 2em;
 }
 
 .ExploreSearch > .selected {
@@ -17,7 +20,13 @@
 }
 
 .SearchResults {
+  margin-top: 1em;
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.SearchResults > .background-text {
+  z-index: -1;
+  font-size: 100px;
 }

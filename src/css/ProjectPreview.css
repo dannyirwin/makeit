@@ -3,7 +3,7 @@
   height: 300px;
   font-size: 10px;
   margin: 10px;
-  box-shadow: 5px 5px 12px 5px lightgrey;
+  box-shadow: -5px 5px 12px 5px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 5;
 }

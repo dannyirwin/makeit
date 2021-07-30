@@ -2,7 +2,8 @@ import React from 'react';
 import ProjectPreview from '../ProjectPreview';
 import UserPreview from '../UserPreview';
 
-export default function SearchResults({ searchResults, searchType }) {
+export default function SearchResults({ searchResults }) {
+  let searchType;
   let resultType = searchResults?.users
     ? 'users'
     : searchResults?.projects

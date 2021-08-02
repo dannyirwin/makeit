@@ -16,7 +16,7 @@ export default function SavedProjectsContainer() {
   ) : (
     <div className='SavedProjectsContainer'>
       <p>You haven't bookmarked any Projects.</p>
-      <p>Click Explore to find Projects to bookmark.</p>
+      <p> Click Explore to find Projects to bookmark.</p>
     </div>
   );
 }

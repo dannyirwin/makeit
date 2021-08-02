@@ -3,7 +3,7 @@
   width: 100vw;
   display: flex;
   background-image: url('../tools1.jpeg');
-  background-size: contain;
+  background-size: cover;
 }
 
 .login-container {

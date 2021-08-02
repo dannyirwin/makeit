@@ -8,7 +8,7 @@ export default function AddImageForm({ addImage, projectId }) {
   const handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    if (file !== '') {
+    if (file !== null) {
       handleUpload(e);
     } else {
       console.log('no image');

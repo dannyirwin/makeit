@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:4000/';
+// const baseUrl = 'http://localhost:4000/';
+const baseUrl = 'https://makeit-backend.herokuapp.com/';
 const usersUrl = baseUrl + 'users/';
 const projectsUrl = baseUrl + 'projects/';
 const followUserUrl = baseUrl + 'follow/';

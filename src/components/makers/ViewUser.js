@@ -16,7 +16,6 @@ export default function ViewUser() {
 
   useEffect(() => {
     fetchGetUser(currentUser.id).then(({ user }) => {
-      console.log(user);
       setViewUser(user);
     });
   }, []);

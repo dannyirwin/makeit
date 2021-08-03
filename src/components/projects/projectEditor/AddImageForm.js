@@ -11,7 +11,6 @@ export default function AddImageForm({ addImage, projectId }) {
     if (file !== null) {
       handleUpload(e);
     } else {
-      console.log('no image');
       const image = {
         image_url: formData.get('imageUrl'),
         caption: formData.get('caption'),

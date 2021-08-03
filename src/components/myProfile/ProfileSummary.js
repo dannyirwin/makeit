@@ -12,7 +12,6 @@ export default function ProfileSummary({ user, isMainUser = false }) {
   const publishedProjects = user?.myProjects?.filter(
     project => project.is_published === true
   );
-  console.log(isMainUser);
 
   const dateString = createdAt2String(user.created_at);
 

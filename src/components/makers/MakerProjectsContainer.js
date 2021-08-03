@@ -7,7 +7,6 @@ export default function MakerProjectsContainer({ projects }) {
       projects
         .filter(project => project.is_published === true)
         .map(project => {
-          console.log(project);
           return <ProjectPreview project={project} />;
         })
     ) : (

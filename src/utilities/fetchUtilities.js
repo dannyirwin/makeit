@@ -189,7 +189,6 @@ const fetchPatchUser = async (data, userId) => {
     usersUrl + userId,
     fetchOptions(data, 'PATCH')
   ).then(response => response.json());
-  console.log(response);
   return response;
 };
 

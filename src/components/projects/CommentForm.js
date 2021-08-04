@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { buildReduxAction } from '../../utilities/generalUtilities';
 import { fetchPostComment } from '../../utilities/fetchUtilities';
 
 export default function CommentForm({ projectId, userId, setProject }) {
   const [content, setContent] = useState('');
+  const dispatch = useDispatch();
 
   const handleSubmitComment = e => {
     e.preventDefault();
     if (content && content !== '') {
-      fetchPostComment(content, userId, projectId).then(setProject);
+      fetchPostComment(content, userId, projectId).then(project => {
+        dispatch(buildReduxAction('SET_CURRENT_PROJECT', project));
+      });
     }
     e.target.reset();
   };

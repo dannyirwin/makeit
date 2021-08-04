@@ -6,7 +6,7 @@ import '../../css/CommentsContainer.css';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
 
-export default function CommentsContainer({ project, setProject }) {
+export default function CommentsContainer({ project }) {
   const user = useSelector(store => store.user);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -34,11 +34,7 @@ export default function CommentsContainer({ project, setProject }) {
         </button>
       )}
       <div className='comments-display'>{!isCollapsed && showComments()}</div>
-      <CommentForm
-        projectId={project.id}
-        userId={user.id}
-        setProject={setProject}
-      />
+      <CommentForm projectId={project.id} userId={user.id} />
     </div>
   );
 }

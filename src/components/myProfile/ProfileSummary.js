@@ -18,7 +18,7 @@ export default function ProfileSummary({ user, isMainUser = false }) {
   return !editMode ? (
     <div className='ProfileSummary'>
       <div className='main-info'>
-        <img src={user.image_url} alt="User's Face"></img>
+        {user.image_url && <img src={user.image_url} alt="User's Face"></img>}
         <div className='text-container'>
           <h1>{user?.username}</h1>
           <p>{user?.about_me}</p>
